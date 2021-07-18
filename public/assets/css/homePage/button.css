@@ -1,0 +1,14 @@
+.see_more {
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 50px;
+  border-radius: 6px;
+  background-color: var(--pn_orange);
+}
+
+.see_more:hover {
+  color: white;
+  background-color: var(--pn_blue);
+  transition: 0.5s;
+}

@@ -1,0 +1,160 @@
+
+.signin_body {
+ 	background:rgb(252, 252, 252); 
+  width:550px;
+  margin:30px auto;
+  border-radius:0.4em;
+
+  overflow:hidden;
+  position:relative;
+  box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2);
+}
+
+.signin_body:after {
+  content:"";
+  display:block;
+  position:absolute;
+  height:1px;
+  width:100px;
+  left:20%;
+  background:linear-gradient(left, #111, #444, #b6b6b8, #444, #111);
+  top:0;
+}
+
+.signin_body:before {
+ 	content:"";
+  display:block;
+  position:absolute;
+  width:8px;
+  height:5px;
+  border-radius:50%;
+  left:34%;
+  top:-7px;
+  box-shadow: 0 0 6px 4px #fff;
+}
+
+.signin_inset {
+ 	padding:20px; 
+ 
+}
+
+.signin_body h1 {
+  font-size:45px;
+  color: #3498db;
+  text-shadow:0 1px 0 black;
+  text-align:center;
+  padding:15px 0;
+  border-bottom:1px solid rgba(0,0,0,1);
+  position:relative;
+ 
+}
+
+
+.signin_email,
+.signin_password {
+ 	width:100%;
+  padding:8px 5px;
+  height: 40px;
+  border:1px solid #222;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.1);
+  border-radius:0.3em;
+  margin-bottom:20px;
+ 
+}
+.signin-container {
+  padding:0 20px 20px 20px;
+ width: 100%; 
+
+  
+}
+
+.signin-container span {
+  display: flex;
+  float:left;
+  color:#0d93ff;
+  background-color: white;
+  overflow:hidden;
+  position:relative;
+  align-items:center;
+  width:60%;
+  height: 80px;
+
+  box-shadow: 0 5px 10px 5px rgba(78, 75, 75, 0.2);
+  
+}
+
+.signin-container span > div {
+  margin: 0px;
+  padding: 5px;
+
+}
+
+
+.signin_robot{
+ 	color:black;
+  padding-bottom:0;
+  font-size: 17px;
+ 
+  width: 100%;
+}
+.signin_img{
+  width: 100px;
+  height: 60px; 
+  
+}
+
+
+.signin_checkbox{
+  vertical-align:baseline;
+  color: black;
+  width:  40px;
+
+}
+
+
+
+.signin-container:after {
+ 	clear:both;
+  display:table;
+  content:"";
+}
+
+.signin_button{
+ 	padding: 10px 25px;
+  margin-top: 5px;
+  text-shadow:0 -1px 0 rgba(0,0,0,0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 10px 10px rgba(255,255,255,0.1);
+  border-radius:0.4em;
+  background:#f39c12;
+  color:white;
+  float:right;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:17px;
+ 
+  border: none;
+}
+
+.signin_button:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -10px 10px rgba(255,255,255,0.1);
+}
+
+.signin_footer{
+  color: black;
+  font-size: 15px;
+  vertical-align: baseline;
+  text-align: center;
+}
+.signin_footer a{
+  text-decoration: none;
+  color: #34495e;
+}
+
+.signin_footer a:hover{
+  color: #2980b9;
+}
+

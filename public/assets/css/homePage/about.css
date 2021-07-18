@@ -1,0 +1,53 @@
+.about_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 12px;
+}
+.about_img {
+  height: 630px;
+  width: 610px;
+  background-image: url("https://cdn.kms-technology.com/wp-content/uploads/2018/11/KMS-Technology-Partners-with-Passerelles-Numeriques-Vietnam-PNV.png");
+  background-position: center;
+  background-size: cover;
+}
+.about_content {
+  width: 660px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about_title {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.about_item {
+  display: flex;
+  margin-top: 20px;
+}
+.about_item_icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+  box-shadow: 1px 3px 10px var(--shadow);
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about_item_icon i {
+  font-size: 20px;
+  color: var(--pn_blue);
+}
+
+.about_sub_box {
+  width: 560px;
+}
+.about_sub_title {
+  font-size: 18px;
+  font-weight: 600;
+}
+.about_sub_content {
+  margin-top: 5px;
+}
