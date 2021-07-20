@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 Menu.propTypes = {
@@ -11,7 +12,7 @@ function Menu(props) {
     <Fragment>
       <header id="header" className="d-flex align-items-center">
         <div className="container d-flex align-items-center justify-content-between">
-          <a href="index.html" className="logo"><img src="assets/img/logo/logo-vi.png" alt="" /></a>
+          <Link to="/" className="logo"><img src="assets/img/logo/logo-vi.png" alt="" /></Link>
           <nav id="navbar" className="navbar">
             <ul>
               <li><a className="nav-link scrollto active" href="#home">Home</a></li>

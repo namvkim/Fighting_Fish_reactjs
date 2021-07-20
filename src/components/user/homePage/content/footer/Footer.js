@@ -24,6 +24,7 @@ function Footer(props) {
           <a href="https://www.linkedin.com/company/passerellesnum-riques"><img src="assets/img/footer/LinkedIn.svg"></img></a>
           <a href="https://www.youtube.com/user/PasserellesNumerique"><img src="assets/img/footer/Youtube.png"></img></a>
         </div>
+        <div className="footer_name_move">© 2020 Passerelles numériques | Thông tin bản quyền</div>
       </div>
     </div>
   );

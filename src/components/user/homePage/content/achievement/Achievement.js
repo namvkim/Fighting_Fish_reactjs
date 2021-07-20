@@ -13,7 +13,7 @@ function Achievement(props) {
                 <div className="shell">
                     {/* Tab panes*/}
                     <div className="layout-horizontal layout-horizontal_md-reverse">
-                        <div className="layout-horizontal__main bg-info">ahih</div>
+                        <div className="layout-horizontal__main">ahih</div>
                         <div className="layout-horizontal__aside">
                             <div className="slick-slider-vertical">
                                 <div className="slick-slider carousel-parent" id="parent-carousel-1" data-loop="true" data-dots="false" data-swipe="true" data-items={1} data-child="#child-carousel-1" data-for="#child-carousel-1">

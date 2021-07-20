@@ -25,11 +25,11 @@ function Home(props) {
             <Goal />
             <Value />
             <About />
-            <Event />
+            {/* <Event /> */}
             <Achievement />
             <Partner />
             <Gallery />
-            <New />
+            {/* <New /> */}
             <Contact />
             <Footer />
         </Fragment>

@@ -55,11 +55,6 @@ const routes = [
         main: () => <Forget />,
     },
     {
-        path: "/admin",
-        exact: true,
-        main: () => <Admin />,
-    },
-    {
         path: "/test/model",
         exact: true,
         main: () => <Model />,

@@ -3,21 +3,18 @@ import PropTypes from 'prop-types';
 
 Value_item.propTypes = {
     title: PropTypes.string,
-    img: PropTypes.string,
+    classAdd: PropTypes.string,
 };
 
 Value_item.defaultProps = {
     title: '',
-    img: '',
+    classAdd: '',
 }
 
 function Value_item(props) {
-    const { title, img } = props;
+    const { title, classAdd } = props;
     return (
-        <div className="value_item">
-            {/* <div className="value_item_box">
-                <img src={img} alt="" />
-            </div> */}
+        <div className={"value_item " + classAdd}>
             <div className="value_title">{title}</div>
         </div>
     );

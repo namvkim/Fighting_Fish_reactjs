@@ -16,13 +16,6 @@
 .banner_content {
   width: 1320px;
   padding: 0 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.banner_content_left {
-  width: 650px;
 }
 
 .banner_content_title {
@@ -89,11 +82,6 @@
   background-color: var(--pn_blue);
 }
 
-/* .banner_button_enroll:hover {
-  background-color: var(--pn_blue_op);
-  transition: 0.5s;
-} */
-
 .banner_button_watch {
   margin-left: 25px;
   display: flex;
@@ -113,4 +101,45 @@
 .banner_button_watch:hover div {
   color: var(--pn_blue);
   transition: 0.3s;
+}
+
+/* ----------ipad----------------------------- */
+
+@media only screen and (max-width: 1024px) {
+  .banner_content {
+    padding: 0 40px;
+  }
+
+  .modal-dialog {
+    max-width: 700px;
+  }
+}
+
+/* -----------smart phone--------- */
+
+@media only screen and (max-width: 480px) {
+  .banner_content {
+    width: 100%;
+  }
+
+  .banner_content_title,
+  .banner_content_title_span1 {
+    font-size: 36px;
+  }
+
+  .banner_content_subcribe {
+    width: 320px;
+  }
+
+  .banner_content {
+    padding: 20px;
+  }
+
+  .banner_content_info {
+    font-size: 18px;
+  }
+
+  .banner_input {
+    width: 220px;
+  }
 }

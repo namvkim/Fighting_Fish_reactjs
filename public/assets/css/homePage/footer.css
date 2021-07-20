@@ -42,3 +42,35 @@
 .footer_email div {
   margin-bottom: 2px;
 }
+
+.footer_name_move {
+  display: none;
+  font-size: 12px;
+}
+
+@media only screen and (max-width: 480px) {
+  .footer_content {
+    display: block;
+    height: auto;
+    padding: 40px 20px 15px 20px;
+  }
+  .footer_content > div {
+    margin: 5px 0;
+  }
+
+  .footer_phone div {
+    margin-left: 12px;
+  }
+
+  .footer_name {
+    display: none;
+  }
+  .footer_name_move {
+    display: block;
+    padding-top: 20px;
+  }
+
+  .footer_icon img {
+    margin: 0 20px 0 0;
+  }
+}
