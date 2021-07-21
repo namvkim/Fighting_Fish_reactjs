@@ -13,16 +13,28 @@ function Achievement(props) {
                 <div className="shell">
                     {/* Tab panes*/}
                     <div className="layout-horizontal layout-horizontal_md-reverse">
-                        <div className="layout-horizontal__main">ahih</div>
+                        <div className="layout-horizontal__main">
+                            <div class="nav">
+                                <button data-bs-toggle="tab" data-bs-target="#nav-home">Home</button>
+                                <button data-bs-toggle="tab" data-bs-target="#nav-profile">Home</button>
+                                <button data-bs-toggle="tab" data-bs-target="#nav-contact">Home</button>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="nav-home">1</div>
+                                <div class="tab-pane fade" id="nav-profile">2</div>
+                                <div class="tab-pane fade" id="nav-contact">3</div>
+                            </div>
+
+                        </div>
                         <div className="layout-horizontal__aside">
                             <div className="slick-slider-vertical">
-                                <div className="slick-slider carousel-parent" id="parent-carousel-1" data-loop="true" data-dots="false" data-swipe="true" data-items={1} data-child="#child-carousel-1" data-for="#child-carousel-1">
-                                    <div className="item">
+                                <div className="slick-slider carousel-parent nav" id="parent-carousel-1" data-loop="true" data-dots="false" data-swipe="true" data-items={1} data-child="#child-carousel-1" data-for="#child-carousel-1">
+                                    <div className="item" >
                                         <div className="slick-image">
                                             <img src="assets/img/achievement/services-1-565x401.jpg" alt="" width={565} height={401} />
                                         </div>
                                     </div>
-                                    <div className="item">
+                                    <div className="item" >
                                         <div className="slick-image">
                                             <img src="assets/img/achievement/services-2-565x401.jpg" alt="" width={565} height={401} />
                                         </div>
@@ -79,6 +91,7 @@ function Achievement(props) {
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

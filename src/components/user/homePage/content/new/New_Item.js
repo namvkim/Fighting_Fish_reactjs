@@ -26,8 +26,8 @@ function New_Item(props) {
     const { img, title, introduce, like, comment, date } = props;
     return (
         <div className="new_item_container">
-            <Link to="#" className="new_item_image ">
-                <img src={img} />
+            <Link to="#" >
+                <div className="new_item_image" style={{ backgroundImage: img }}></div>
             </Link>
             <div className="new_item_title">
                 <Link to="#" >{title}</Link>

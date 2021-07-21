@@ -9,7 +9,7 @@ function Footer(props) {
   return (
     <div className="footer_container">
       <div className="footer_content">
-        <div className="footer_name">© 2020 Passerelles numériques | Thông tin bản quyền</div>
+        <div className="footer_name">© 2020 Passerelles numériques | Copyright Information</div>
         <div className="footer_phone">
           <i className="fas fa-mobile-alt"></i>
           <div>84 236 3888 503</div>
@@ -24,7 +24,7 @@ function Footer(props) {
           <a href="https://www.linkedin.com/company/passerellesnum-riques"><img src="assets/img/footer/LinkedIn.svg"></img></a>
           <a href="https://www.youtube.com/user/PasserellesNumerique"><img src="assets/img/footer/Youtube.png"></img></a>
         </div>
-        <div className="footer_name_move">© 2020 Passerelles numériques | Thông tin bản quyền</div>
+        <div className="footer_name_move">© 2020 Passerelles numériques | Copyright Information</div>
       </div>
     </div>
   );

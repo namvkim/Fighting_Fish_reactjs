@@ -16,7 +16,7 @@ function Contact(props) {
               <div className="contact-box mb-4">
                 <i className="bx bx-map" />
                 <h3>Our Address</h3>
-                <p>99 Tô Hiến Thành, Phước Mỹ, Sơn Trà, Đà Nẵng</p>
+                <p>99 To Hien Thanh, Phuoc My, Son Tra, Da Nang</p>
               </div>
             </div>
             <div className="col-lg-3 col-md-6">
@@ -54,7 +54,6 @@ function Contact(props) {
                 <div className="form-group">
                   <textarea className="form-control" name="message" rows={5} placeholder="Message" required defaultValue={""} />
                 </div>
-
                 <div className="text-center"><button type="submit">Send Message</button></div>
               </form>
             </div>

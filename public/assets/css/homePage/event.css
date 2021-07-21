@@ -19,11 +19,28 @@
   text-align: left;
 }
 
+.timeline__item-main p {
+  text-align: justify;
+}
+
 @media (max-width: 767px) {
   .timeline__item {
-    max-width: 340px;
+    max-width: 320px;
     margin-left: auto;
     margin-right: auto;
+  }
+  .timeline__item-main p {
+    white-space: normal;
+    height: 96px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 25px;
+    -webkit-line-clamp: 4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+  .timeline__item {
+    padding-left: 0;
   }
 }
 

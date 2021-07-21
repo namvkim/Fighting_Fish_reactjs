@@ -23,7 +23,7 @@ function Banner(props) {
                 <div className="banner_button">
                     <input type="button" className="banner_button_enroll" value="Enrollment"></input>
                     <a
-                        href="assets/video/videoplayback.mp4"
+                        href="https://youtu.be/WUOxMDu-9zM"
                         className="glightbox banner_button_watch"
                     >
                         <i className='bx bx-caret-right-circle'></i>

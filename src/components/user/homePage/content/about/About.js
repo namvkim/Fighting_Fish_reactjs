@@ -9,31 +9,33 @@ About.propTypes = {
 
 function About(props) {
     return (
-        <Layout_homePage title="About Us" id="about">
+        <Layout_homePage title="About Us" id="about" layoutDisplay="flex" link="#">
             <div className="about_container">
-                <div className="about_img"></div>
+                <div className="about_img" style={{ backgroundImage: "url('" + "http://statis.dsp.vn/FAD/images/2020/Thang_7/20.jpg" + "')" }}></div>
                 <div className="about_content">
-                    <div className="about_title">Bạn đồng lòng với sứ mệnh và mục tiêu của chúng tôi? </div>
                     <About_item
-                        title="Quy trình tuyển sinh công bằng và nghiêm ngặt"
+                        title="Conduct a fair and rigorous selection"
                         icon="far fa-edit"
-                        content="Chủ yếu tập trung vào các vùng nghèo khó. Quy trình tuyển sinh diễn ra công bằng và nghiêm ngặt" />
+                        content="Concentrating on the poorest areas in the large region surrounding seven provinces, our selection process follows four stages:
+                        information sessions, written exams, individual interviews and social investigations." />
                     <About_item
-                        title="Chương trình đào tạo chuyên sâu"
+                        title="Provide a general training in professional skills"
                         icon="fas fa-chalkboard-teacher"
-                        content="Chủ yếu tập trung vào các vùng nghèo khó. Quy trình tuyển sinh diễn ra công bằng và nghiêm ngặt" />
+                        content="This differentiating component of our training programs is highly appreciated by recruiting companies." />
                     <About_item
-                        title="Chương trình đào tạo và thực hành thiết thực"
+                        title="Deliver a solid technical and practical training"
                         icon="fas fa-laptop-code"
-                        content="Chủ yếu tập trung vào các vùng nghèo khó. Quy trình tuyển sinh diễn ra công bằng và nghiêm ngặt" />
+                        content="Focusing on employability, Passerelles numériques’ training is constantly updated in order to match business needs; it aims at being practical, targeted and certified." />
                     <About_item
-                        title="Giáo dục và phát triển nhân cách"
+                        title="Ensure a social and educational development"
                         icon="fas fa-chart-line"
-                        content="Chủ yếu tập trung vào các vùng nghèo khó. Quy trình tuyển sinh diễn ra công bằng và nghiêm ngặt" />
+                        content="To prepare our students to become autonomous and independent adults,
+                        Passerelles numériques has developed a personal development extra-curricular program which revolves around PN’s values:
+                        trust, responsibility, solidarity. Our holistic educative approach also helps our students to acquire solid general knowledge and better understand the world around them." />
                     <About_item
-                        title="Hỗ trợ tìm kiếm việc làm"
+                        title="Facilitate access to employment"
                         icon="fas fa-search-location"
-                        content="Chủ yếu tập trung vào các vùng nghèo khó. Quy trình tuyển sinh diễn ra công bằng và nghiêm ngặt" />
+                        content="Students are guided through both their internship and job search by our External Relations department, closely supported by our alumni network and by PN’s partners (resume and cover letter workshops, individual follow-up and coaching, career orientation sessions, regular sessions of job interview roleplays)." />
                 </div>
             </div>
         </Layout_homePage>

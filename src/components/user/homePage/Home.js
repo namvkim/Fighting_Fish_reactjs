@@ -1,5 +1,4 @@
-import React, { Fragment } from 'react';
-// import PropTypes from 'prop-types';
+import React, { Fragment, useState, useEffect } from 'react';
 import Menu from './content/menu/Menu';
 import Banner from './content/banner/Banner';
 import Value from './content/value/Value';
@@ -12,24 +11,29 @@ import Gallery from './content/gallery/Gallery';
 import New from './content/new/New';
 import Contact from './content/contact/Contact';
 import Footer from './content/footer/Footer';
+import Loader from '../loader/loader';
 
-Home.propTypes = {
+const Home = (props) => {
+    const [loader, setLoader] = useState(true);
 
-};
+    useEffect(() => {
+        setLoader(false);
+    }, []);
 
-function Home(props) {
+
     return (
         <Fragment>
+            {loader ? <Loader /> : ''}
             <Menu />
             <Banner />
             <Goal />
             <Value />
             <About />
-            {/* <Event /> */}
+            <Event />
             <Achievement />
             <Partner />
             <Gallery />
-            {/* <New /> */}
+            <New />
             <Contact />
             <Footer />
         </Fragment>

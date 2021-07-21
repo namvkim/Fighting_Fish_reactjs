@@ -53,6 +53,7 @@
     display: block;
     height: auto;
     padding: 40px 20px 15px 20px;
+    font-size: 14px;
   }
   .footer_content > div {
     margin: 5px 0;

@@ -459,6 +459,10 @@
   .slick-slider-vertical .carousel-child .slick-next::before {
     right: -1px;
   }
+
+  #achievement .layout_content {
+    padding: 60px 5px;
+  }
 }
 
 @media (min-width: 768px) {

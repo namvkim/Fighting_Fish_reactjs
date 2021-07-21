@@ -22,12 +22,13 @@ function Menu(props) {
               <li><a className="nav-link scrollto" href="#gallery">Gallery</a></li>
               <li><a className="nav-link scrollto" href="#news">News</a></li>
               <li><a className="nav-link scrollto" href="#contact">Contact</a></li>
-              <button type="button" data-bs-toggle="modal" data-bs-target="#menu_model">
-                <span className="menu_btn_1">Donate</span><span className="menu_btn_2">Thank you!</span>
-              </button>
+
             </ul>
             <i className="bi bi-list mobile-nav-toggle" />
           </nav>
+          <button type="button" data-bs-toggle="modal" data-bs-target="#menu_model">
+            <span className="menu_btn_1">Donate</span><span className="menu_btn_2">Thank you!</span>
+          </button>
         </div>
       </header>
       <div className="modal fade" id="menu_model" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

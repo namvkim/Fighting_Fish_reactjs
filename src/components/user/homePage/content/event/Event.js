@@ -20,7 +20,7 @@ function Event(props) {
                                 <img src="assets/img/achievement/about-4-93x86.jpg" alt="" width="93" height="86" />
                                 <p>
                                     We started to offer American companies top-notch marketing
-                                    services.
+                                    servic3
                                 </p>
                             </div>
                         </article>
@@ -33,6 +33,13 @@ function Event(props) {
                             <div className="timeline__item-main">
                                 <img src="assets/img/achievement/about-4-93x86.jpg" alt="" width="93" height="86" />
                                 <p>
+
+                                    We started to offer American companies top-notch marketing
+                                    services.
+                                    We started to offer American companies top-notch marketing
+                                    services.
+                                    We started to offer American companies top-notch marketing
+                                    services.
                                     We started to offer American companies top-notch marketing
                                     services.
                                 </p>

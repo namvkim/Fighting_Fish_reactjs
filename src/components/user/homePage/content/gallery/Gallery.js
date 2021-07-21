@@ -11,11 +11,11 @@ function Gallery(props) {
                     <div className="row" data-aos="fade-up" data-aos-delay="100">
                         <div className="col-lg-12 d-flex justify-content-center">
                             <ul id="portfolio-flters">
+                                <li data-filter=".filter-ero">Ero Team</li>
+                                <li data-filter=".filter-edu">Edu Team</li>
+                                <li data-filter=".filter-it">IT Team</li>
+                                <li data-filter=".filter-students">Students</li>
                                 <li data-filter="*" className="filter-active">All</li>
-                                <li data-filter=".filter-app">Ero</li>
-                                <li data-filter=".filter-card">Edu</li>
-                                <li data-filter=".filter-web">IT</li>
-                                <li data-filter=".filter-web">Student</li>
                             </ul>
                         </div>
                     </div>
@@ -25,7 +25,7 @@ function Gallery(props) {
                         data-aos="fade-up"
                         data-aos-delay="200"
                     >
-                        <div className="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div className="col-lg-4 col-md-6 portfolio-item filter-students">
                             <a
                                 href="assets/img/gallery/portfolio-1.jpg"
                                 data-gallery="portfolioGallery"
@@ -41,7 +41,7 @@ function Gallery(props) {
                             <div className="portfolio-info">title1</div>
                         </div>
 
-                        <div className="col-lg-4 col-md-6 portfolio-item filter-web">
+                        <div className="col-lg-4 col-md-6 portfolio-item filter-students">
                             <a
                                 href="assets/img/gallery/portfolio-2.jpg"
                                 data-gallery="portfolioGallery"
@@ -57,7 +57,7 @@ function Gallery(props) {
                             <div className="portfolio-info">title2</div>
                         </div>
 
-                        <div className="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div className="col-lg-4 col-md-6 portfolio-item filter-ero">
                             <a
                                 href="assets/img/gallery/portfolio-3.jpg"
                                 data-gallery="portfolioGallery"
@@ -73,7 +73,7 @@ function Gallery(props) {
                             <div className="portfolio-info">title3</div>
                         </div>
 
-                        <div className="col-lg-4 col-md-6 portfolio-item filter-card">
+                        <div className="col-lg-4 col-md-6 portfolio-item filter-ero">
                             <a
                                 href="assets/img/gallery/portfolio-4.jpg"
                                 data-gallery="portfolioGallery"
@@ -89,7 +89,7 @@ function Gallery(props) {
                             <div className="portfolio-info">title4</div>
                         </div>
 
-                        <div className="col-lg-4 col-md-6 portfolio-item filter-web">
+                        <div className="col-lg-4 col-md-6 portfolio-item filter-edu">
                             <a
                                 href="assets/img/gallery/portfolio-5.jpg"
                                 data-gallery="portfolioGallery"
@@ -105,7 +105,7 @@ function Gallery(props) {
                             <div className="portfolio-info">title5</div>
                         </div>
 
-                        <div className="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div className="col-lg-4 col-md-6 portfolio-item filter-edu">
                             <a
                                 href="assets/img/gallery/portfolio-6.jpg"
                                 data-gallery="portfolioGallery"
@@ -121,7 +121,7 @@ function Gallery(props) {
                             <div className="portfolio-info">title6</div>
                         </div>
 
-                        <div className="col-lg-4 col-md-6 portfolio-item filter-card">
+                        <div className="col-lg-4 col-md-6 portfolio-item filter-it">
                             <a
                                 href="assets/img/gallery/portfolio-7.jpg"
                                 data-gallery="portfolioGallery"
@@ -137,7 +137,7 @@ function Gallery(props) {
                             <div className="portfolio-info">title7</div>
                         </div>
 
-                        <div className="col-lg-4 col-md-6 portfolio-item filter-card">
+                        <div className="col-lg-4 col-md-6 portfolio-item filter-it">
                             <a
                                 href="assets/img/gallery/portfolio-8.jpg"
                                 data-gallery="portfolioGallery"
@@ -153,7 +153,7 @@ function Gallery(props) {
                             <div className="portfolio-info">title8</div>
                         </div>
 
-                        <div className="col-lg-4 col-md-6 portfolio-item filter-web">
+                        <div className="col-lg-4 col-md-6 portfolio-item filter-it">
                             <a
                                 href="assets/img/gallery/portfolio-9.jpg"
                                 data-gallery="portfolioGallery"
