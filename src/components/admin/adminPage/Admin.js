@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Partner from './Partner';
+import Visited from './Visited';
+import Contacted from './Contacted';
+import Donated from './Donated';
+import Gallery from './Gallery';
+import Gallery_type from './Gallery_type';
 
 Admin.propTypes = {
 
@@ -95,43 +100,42 @@ function Admin(props) {
                                 <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#contacted" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
                                     Contacted
                                 </button>
-                                <button className="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
+                                <button className="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#donated" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
                                     Donated
                                 </button>
                             </div>
                         </nav>
                         <div className="tab-content" id="nav-tabContent">
                             <div className="tab-pane fade show active admin_tab_box" id="visited" role="tabpanel" aria-labelledby="nav-home-tab">
-                                <table className="admin_table">
-                                    <thead><tr className="admin_table_header">
-                                        <th>No.</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Address</th>
-                                        <th>Created at</th>
-                                    </tr></thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>le son nam</td>
-                                            <td>nam.le22@student.passerellesnumeriques.org</td>
-                                            <td>0386005775</td>
-                                            <td>101b-le huu trac-son tra-da nang</td>
-                                            <td>2021-18-7 11:55:00</td>
-                                        </tr>
-                                    </tbody></table>
+                                <Visited />
                             </div>
                             <div className="tab-pane fade admin_tab_box" id="contacted" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                contacted
+                                <Contacted />
                             </div>
                             <div className="tab-pane fade admin_tab_box" id="donated" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                Donated
+                                <Donated />
                             </div>
                         </div>
                     </div>
                     <div id="ad_gallery" className="tab w3-animate-right" style={{ display: 'none' }}>
-                        <h2>Slide in from gallery</h2>
+                        <nav className="admin_tab_title">
+                            <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                                <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#gallery" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                                    Gallery
+                                </button>
+                                <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#gallery_type" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                                    Gallery type
+                                </button>
+                            </div>
+                        </nav>
+                        <div className="tab-content" id="nav-tabContent">
+                            <div className="tab-pane fade show active admin_tab_box" id="gallery" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <Gallery />
+                            </div>
+                            <div className="tab-pane fade admin_tab_box" id="gallery_type" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <Gallery_type />
+                            </div>
+                        </div>
                     </div>
                     <div id="ad_news" className="tab w3-animate-right" style={{ display: 'none' }}>
                         <h2>Slide in from news</h2>
