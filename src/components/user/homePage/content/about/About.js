@@ -11,7 +11,7 @@ function About(props) {
     return (
         <Layout_homePage title="About Us" id="about" layoutDisplay="flex" link="#">
             <div className="about_container">
-                <div className="about_img" style={{ backgroundImage: "url('" + "http://statis.dsp.vn/FAD/images/2020/Thang_7/20.jpg" + "')" }}></div>
+                <div className="about_img" style={{ backgroundImage: "url('" + "https://i.ibb.co/2FSJQd4/PNV-2020-XMas2020-Video-2020-XMas-Photos.jpg" + "')" }}></div>
                 <div className="about_content">
                     <About_item
                         title="Conduct a fair and rigorous selection"

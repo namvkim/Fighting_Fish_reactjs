@@ -1,9 +1,43 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Layout_homePage from '../layout/Layout_homePage';
 
 function Gallery(props) {
+    const [results, setResults] = useState([]);
 
+    const get = () => {
+        axios({
+            method: 'get',
+            url: 'http://localhost:8000/api/gallery',
+        })
+            .then((res) => {
+                setResults(res.data.slice(0, 6));
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    }
+
+    useEffect(() => {
+        get();
+    }, [])
+    let element = results.map((result, index) => {
+        return <div key={index} className="col-lg-4 col-md-6 portfolio-item filter-students">
+            <a
+                href="assets/img/gallery/portfolio-1.jpg"
+                data-gallery="portfolioGallery"
+                className="portfolio-lightbox preview-link"
+                title="App 12"
+            >
+                <img
+                    src="assets/img/gallery/portfolio-1.jpg"
+                    className="img-fluid"
+                    alt=""
+                />
+            </a>
+            <div className="portfolio-info">title1</div>
+        </div>
+    });
     return (
         <Layout_homePage title="Our Gallery" id="gallery">
             <div id="portfolio" className="portfolio">
@@ -25,23 +59,11 @@ function Gallery(props) {
                         data-aos="fade-up"
                         data-aos-delay="200"
                     >
-                        <div className="col-lg-4 col-md-6 portfolio-item filter-students">
-                            <a
-                                href="assets/img/gallery/portfolio-1.jpg"
-                                data-gallery="portfolioGallery"
-                                className="portfolio-lightbox preview-link"
-                                title="App 12"
-                            >
-                                <img
-                                    src="assets/img/gallery/portfolio-1.jpg"
-                                    className="img-fluid"
-                                    alt=""
-                                />
-                            </a>
-                            <div className="portfolio-info">title1</div>
-                        </div>
+                        {/* {
+                            element
+                        } */}
 
-                        <div className="col-lg-4 col-md-6 portfolio-item filter-students">
+                        {/* <div className="col-lg-4 col-md-6 portfolio-item filter-students">
                             <a
                                 href="assets/img/gallery/portfolio-2.jpg"
                                 data-gallery="portfolioGallery"
@@ -151,9 +173,9 @@ function Gallery(props) {
                                 />
                             </a>
                             <div className="portfolio-info">title8</div>
-                        </div>
+                        </div> */}
 
-                        <div className="col-lg-4 col-md-6 portfolio-item filter-it">
+                        {/* <div className="col-lg-4 col-md-6 portfolio-item filter-it">
                             <a
                                 href="assets/img/gallery/portfolio-9.jpg"
                                 data-gallery="portfolioGallery"
@@ -167,7 +189,7 @@ function Gallery(props) {
                                 />
                             </a>
                             <div className="portfolio-info">title9</div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

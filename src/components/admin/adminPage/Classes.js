@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
-const Gallery_type = (props) => {
-    const [item, setItem] = useState({ type: '' });
+function Classes(props) {
+    const [item, setItem] = useState({ name: '' });
     const [results, setResults] = useState([]);
     const [message, setMessage] = useState('');
 
@@ -18,7 +17,7 @@ const Gallery_type = (props) => {
     const post = (e) => {
         axios({
             method: 'post',
-            url: 'http://localhost:8000/api/gallerytype',
+            url: 'http://localhost:8000/api/class',
             data: item,
         })
             .then((res) => {
@@ -36,7 +35,7 @@ const Gallery_type = (props) => {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/gallerytype',
+            url: 'http://localhost:8000/api/class',
         })
             .then((res) => {
                 setResults(res.data);
@@ -53,7 +52,7 @@ const Gallery_type = (props) => {
     const update = (e) => {
         axios({
             method: 'put',
-            url: 'http://localhost:8000/api/gallerytype/' + item.id,
+            url: 'http://localhost:8000/api/class/' + item.id,
             data: item,
         })
             .then((res) => {
@@ -73,7 +72,7 @@ const Gallery_type = (props) => {
     const del = (id) => {
         axios({
             method: 'delete',
-            url: 'http://localhost:8000/api/gallerytype/' + id,
+            url: 'http://localhost:8000/api/class/' + id,
         })
             .then((res) => {
                 setResults(res.data);
@@ -90,16 +89,16 @@ const Gallery_type = (props) => {
     let i = 1;
     return (
         <div>
-            <button data-bs-toggle="modal" data-bs-target="#addGalleryType">Add gallery type</button>
-            <div className="modal fade" id="addGalleryType" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <button data-bs-toggle="modal" data-bs-target="#addClass">Add class</button>
+            <div className="modal fade" id="addClass" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-xl">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Add gallery type</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Add class</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <input type="text" name="type" className="form-control mb-2" onChange={onChange} placeholder="Enter gallery type" />
+                            <input type="text" name="name" className="form-control mb-2" onChange={onChange} placeholder="Enter gallery type" />
                         </div>
                         <div className="modal-footer">
                             <button type="submit" onClick={post} className="btn btn-primary" data-bs-dismiss="modal">Save</button>
@@ -111,29 +110,29 @@ const Gallery_type = (props) => {
             <table className="admin_table">
                 <thead><tr className="admin_table_header">
                     <th>No.</th>
-                    <th>Type</th>
+                    <th>Name</th>
                     <th>Fix</th>
                 </tr></thead>
                 <tbody>
                     {results.map((result, index) => {
                         return <tr key={index}>
                             <td>{i++}</td>
-                            <td>{result.type}</td>
-                            <td><button data-bs-toggle="modal" data-bs-target="#updateGalleryType" onClick={() => showUpdate(result)}>update</button>
+                            <td>{result.name}</td>
+                            <td><button data-bs-toggle="modal" data-bs-target="#updateClass" onClick={() => showUpdate(result)}>update</button>
                                 <button onClick={() => del(result.id)}>delete</button></td>
                         </tr>
                     })}
                 </tbody>
             </table>
-            <div className="modal fade" id="updateGalleryType" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="updateClass" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-xl">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Update gallery type</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Update class</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <input type="text" name="type" className="form-control mb-2" defaultValue={item.type} onChange={onChange} placeholder="Enter gallery type" />
+                            <input type="text" name="name" className="form-control mb-2" defaultValue={item.name} onChange={onChange} placeholder="Enter gallery type" />
                         </div>
                         <div className="modal-footer">
                             <button type="button" onClick={update} className="btn btn-primary" data-bs-dismiss="modal">Save</button>
@@ -145,4 +144,4 @@ const Gallery_type = (props) => {
     );
 }
 
-export default Gallery_type;
+export default Classes;

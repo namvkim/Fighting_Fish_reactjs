@@ -1,47 +1,61 @@
-
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 import Layout_homePage from '../layout/Layout_homePage';
 
 function Partner(props) {
+  const [results, setResults] = useState([]);
+
+  const get = () => {
+    axios({
+      method: 'get',
+      url: 'http://localhost:8000/api/partner',
+    })
+      .then((res) => {
+        console.log(res.data);
+        setResults(res.data);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }
+
+  useEffect(() => {
+    get();
+  }, [])
+
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
 
   return (
     <Layout_homePage title="Our Partners" id="partner">
-      <div className="multi-carousel px-3" data-items={5} data-interval="4000">
-        <div className="multi-carousel-inner">
-          <div className="multi-carousel-item">
-            <div className="partner_item">
-              <img src="./assets/img/partner/vi_FondationAmanjaya.png" alt="" />
+      <Carousel responsive={responsive} autoPlaySpeed={4000} autoPlay={true}>
+        {results.map((item, index) => {
+          return (
+            <div key={index} className="partner_item">
+              <img src={item.img} alt="" />
             </div>
-          </div>
-          <div className="multi-carousel-item">
-            <div className="partner_item">
-              <img src="./assets/img/partner/vi_Blancmesnil.png" alt="" />
-            </div>
-          </div>
-          <div className="multi-carousel-item">
-            <div className="partner_item">
-              <img src="./assets/img/partner/vi_DVT.png" alt="" />
-            </div>
-          </div>
-          <div className="multi-carousel-item">
-            <div className="partner_item">
-              <img src="./assets/img/partner/vi_Enouvo.png" alt="" />
-            </div>
-          </div>
-          <div className="multi-carousel-item">
-            <div className="partner_item">
-              <img src="./assets/img/partner/vi_Microsoft.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <a className="carousel-control-prev" tabIndex={0} role="button" data-slide="prev">
-          <span className="carousel-control-prev-icon" aria-hidden="true" />
-        </a>
-        <a className="carousel-control-next" tabIndex={0} role="button" data-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true" />
-        </a>
-      </div>
+          );
+        })}
+      </Carousel>
     </Layout_homePage>
 
   );

@@ -21,7 +21,8 @@ function Banner(props) {
                     <input type="button" className="banner_button_subcribe" value="Subcribe"></input>
                 </div>
                 <div className="banner_button">
-                    <input type="button" className="banner_button_enroll" value="Enrollment"></input>
+                    <input type="button" className="banner_button_enroll" value="Enrollment" data-bs-toggle="modal" data-bs-target="#banner_model"></input>
+
                     <a
                         href="https://youtu.be/WUOxMDu-9zM"
                         className="glightbox banner_button_watch"
@@ -30,7 +31,27 @@ function Banner(props) {
                         <div>Watch Video</div>
                     </a>
                 </div>
-
+                <div className="modal fade" id="banner_model" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog modal-xl">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Fill in enrollment information</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div className="modal-body">
+                                <input type="text" name="name" className="form-control mb-2" placeholder="Enter your name" />
+                                <input type="text" name="phone" className="form-control mb-2" placeholder="Enter your phone" />
+                                <input type="text" name="school" className="form-control mb-2" placeholder="Enter your school name" />
+                                <input type="text" name="phone" className="form-control mb-2" placeholder="Enter your phone" />
+                                <input type="text" name="birthDay" className="form-control mb-2" placeholder="Enter your birth day" />
+                                <input type="file" name="img" />
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

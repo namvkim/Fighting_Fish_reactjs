@@ -14,15 +14,15 @@ function Achievement(props) {
                     {/* Tab panes*/}
                     <div className="layout-horizontal layout-horizontal_md-reverse">
                         <div className="layout-horizontal__main">
-                            <div class="nav">
+                            <div className="nav">
                                 <button data-bs-toggle="tab" data-bs-target="#nav-home">Home</button>
                                 <button data-bs-toggle="tab" data-bs-target="#nav-profile">Home</button>
                                 <button data-bs-toggle="tab" data-bs-target="#nav-contact">Home</button>
                             </div>
-                            <div class="tab-content">
-                                <div class="tab-pane fade show active" id="nav-home">1</div>
-                                <div class="tab-pane fade" id="nav-profile">2</div>
-                                <div class="tab-pane fade" id="nav-contact">3</div>
+                            <div className="tab-content">
+                                <div className="tab-pane fade show active" id="nav-home">1</div>
+                                <div className="tab-pane fade" id="nav-profile">2</div>
+                                <div className="tab-pane fade" id="nav-contact">3</div>
                             </div>
 
                         </div>

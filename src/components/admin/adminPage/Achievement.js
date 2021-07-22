@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Partner = (props) => {
-    const [partner, setPartner] = useState({ name: '', link: '', content: '' });
+const Achievement = (props) => {
+    const [item, setItem] = useState('');
     const [results, setResults] = useState([]);
+    const [types, setTypes] = useState([]);
     const [message, setMessage] = useState('');
     const [file, setFile] = useState('');
 
     const onChange = (e) => {
         const key = e.target.name;
         const value = e.target.value;
-        const newPartner = { ...partner, [key]: value };
+        const newItem = { ...item, [key]: value };
 
-        setPartner(newPartner);
+        setItem(newItem);
     }
     const onChangeImg = (e) => {
         setFile(e.target.files[0]);
@@ -37,11 +38,12 @@ const Partner = (props) => {
     const post = (e) => {
         e.preventDefault();
         uploadImage(file).then((res) => {
-            const newPartner = { ...partner, img: res };
+            const newItem = { ...item, img: res };
+            console.log(newItem);
             axios({
                 method: 'post',
-                url: 'http://localhost:8000/api/partner',
-                data: newPartner,
+                url: 'http://localhost:8000/api/achievement',
+                data: newItem,
             })
                 .then((res) => {
                     if (res.data.status == 200) {
@@ -59,7 +61,7 @@ const Partner = (props) => {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/partner',
+            url: 'http://localhost:8000/api/achievement',
         })
             .then((res) => {
                 setResults(res.data);
@@ -69,19 +71,32 @@ const Partner = (props) => {
             });
     }
 
-    const showUpdate = (partner) => {
-        setPartner(partner);
+    const getType = () => {
+        axios({
+            method: 'get',
+            url: 'http://localhost:8000/api/class',
+        })
+            .then((res) => {
+                setTypes(res.data);
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    }
+
+    const showUpdate = (item) => {
+        setItem(item);
     }
 
     const update = (e) => {
         e.preventDefault();
         if (file != '') {
             uploadImage(file).then((res) => {
-                const newPartner = { ...partner, img: res };
+                const newItem = { ...item, img: res };
                 axios({
                     method: 'put',
-                    url: 'http://localhost:8000/api/partner/' + partner.id,
-                    data: newPartner,
+                    url: 'http://localhost:8000/api/achievement/' + item.id,
+                    data: newItem,
                 })
                     .then((res) => {
                         if (res.data.status == 200) {
@@ -97,8 +112,8 @@ const Partner = (props) => {
         } else {
             axios({
                 method: 'put',
-                url: 'http://localhost:8000/api/partner/' + partner.id,
-                data: partner,
+                url: 'http://localhost:8000/api/achievement/' + item.id,
+                data: item,
             })
                 .then((res) => {
                     if (res.data.status == 200) {
@@ -116,7 +131,7 @@ const Partner = (props) => {
     const del = (id) => {
         axios({
             method: 'delete',
-            url: 'http://localhost:8000/api/partner/' + id,
+            url: 'http://localhost:8000/api/achievement/' + id,
         })
             .then((res) => {
                 setResults(res.data);
@@ -128,24 +143,36 @@ const Partner = (props) => {
 
     useEffect(() => {
         get();
+        getType();
     }, [])
 
     let i = 1;
     return (
-        <div className="admin_tab_box">
-            <button data-bs-toggle="modal" data-bs-target="#addModel">Add partner</button>
-            <div className="modal fade" id="addModel" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div>
+            <button data-bs-toggle="modal" data-bs-target="#addAchievement">Add achievement</button>
+            <div className="modal fade" id="addAchievement" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-xl">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Add partner</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Add achievement</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <input type="text" name="name" className="form-control mb-2" onChange={onChange} placeholder="Enter partner name" />
-                            <input type="text" name="link" className="form-control mb-2" onChange={onChange} placeholder="Enter partner link " />
+                            <input type="text" name="authorName" className="form-control mb-2" onChange={onChange} placeholder="Enter author name" />
+                            <input type="text" name="topic" className="form-control mb-2" onChange={onChange} placeholder="Enter the topic" />
+                            <input type="text" name="technology" className="form-control mb-2" onChange={onChange} placeholder="Enter the technology" />
                             <input type="file" name="img" className="form-control mb-2" onChange={onChangeImg} />
-                            <textarea rows={10} type="text" name="content" className="form-control" onChange={onChange} placeholder="Enter partner content" />
+                            <input type="text" name="link" className="form-control mb-2" onChange={onChange} placeholder="Enter the link " />
+                            <input type="text" name="shortContent" className="form-control mb-2" onChange={onChange} placeholder="Enter the short content " />
+                            <select name="classes_id" id="#" onChange={onChange} className="mb-2">
+                                <option value=""></option>
+                                {
+                                    types.map((type, index) => {
+                                        return <option key={index} value={type.id}>{type.name}</option>
+                                    })
+                                }
+                            </select>
+                            <textarea rows={10} type="content" name="content" className="form-control" onChange={onChange} placeholder="Enter the content" />
                         </div>
                         <div className="modal-footer">
                             <button type="submit" onClick={post} className="btn btn-primary" data-bs-dismiss="modal">Save</button>
@@ -157,9 +184,13 @@ const Partner = (props) => {
             <table className="admin_table">
                 <thead><tr className="admin_table_header">
                     <th>No.</th>
-                    <th>Name</th>
-                    <th>Link</th>
+                    <th>Class</th>
+                    <th>Author</th>
+                    <th>Topic</th>
+                    <th>Technology</th>
                     <th>Image</th>
+                    <th>Link</th>
+                    <th>Short Content</th>
                     <th>Content</th>
                     <th>Fix</th>
                 </tr></thead>
@@ -168,28 +199,44 @@ const Partner = (props) => {
                         return <tr key={index}>
                             <td>{i++}</td>
                             <td>{result.name}</td>
-                            <td><a href={result.link}>{result.link}</a></td>
+                            <td>{result.authorName}</td>
+                            <td>{result.topic}</td>
+                            <td>{result.technology}</td>
                             <td><img className="ad_table_img" src={result.img}></img></td>
+                            <td><a src={result.link}>{result.link}</a></td>
+                            <td>{result.shortContent}</td>
                             <td>{result.content}</td>
-                            <td><button data-bs-toggle="modal" data-bs-target="#updateModel" onClick={() => showUpdate(result)}>update</button>
+                            <td><button data-bs-toggle="modal" data-bs-target="#updateAchievement" onClick={() => showUpdate(result)}>update</button>
                                 <button onClick={() => del(result.id)}>delete</button></td>
                         </tr>
                     })}
                 </tbody>
             </table>
-            <div className="modal fade" id="updateModel" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="updateAchievement" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-xl">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Update partner</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Update achievement</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <input type="text" name="name" className="form-control mb-2" defaultValue={partner.name} onChange={onChange} placeholder="Enter partner name" />
-                            <input type="text" name="link" className="form-control mb-2" defaultValue={partner.link} onChange={onChange} placeholder="Enter partner link " />
-                            <img className="ad_table_img mb-2" src={partner.img}></img>
+
+                            <input type="text" name="authorName" className="form-control mb-2" defaultValue={item.authorName} onChange={onChange} placeholder="Enter author name" />
+                            <input type="text" name="topic" className="form-control mb-2" defaultValue={item.topic} onChange={onChange} placeholder="Enter the topic" />
+                            <input type="text" name="technology" className="form-control mb-2" defaultValue={item.technology} onChange={onChange} placeholder="Enter the technology" />
+                            <img className="ad_table_img mb-2" src={item.img}></img>
                             <input type="file" name="img" className="form-control mb-2" onChange={onChangeImg} />
-                            <textarea rows={10} type="text" name="content" className="form-control" defaultValue={partner.content} onChange={onChange} placeholder="Enter partner content" />
+                            <input type="text" name="link" className="form-control mb-2" defaultValue={item.link} onChange={onChange} placeholder="Enter the link " />
+                            <input type="text" name="shortContent" className="form-control mb-2" defaultValue={item.shortContent} onChange={onChange} placeholder="Enter the short content " />
+                            <select name="classes_id" defaultValue={item.classes_id} id="#" onChange={onChange} className="mb-2">
+                                <option value=""></option>
+                                {
+                                    types.map((type, index) => {
+                                        return <option key={index} value={type.id}>{type.name}</option>
+                                    })
+                                }
+                            </select>
+                            <textarea rows={10} type="content" name="content" defaultValue={item.content} className="form-control" onChange={onChange} placeholder="Enter the content" />
                         </div>
                         <div className="modal-footer">
                             <button type="button" onClick={update} className="btn btn-primary" data-bs-dismiss="modal">Save</button>
@@ -198,7 +245,7 @@ const Partner = (props) => {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default Partner;
+export default Achievement;

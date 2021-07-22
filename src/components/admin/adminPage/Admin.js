@@ -6,10 +6,12 @@ import Contacted from './Contacted';
 import Donated from './Donated';
 import Gallery from './Gallery';
 import Gallery_type from './Gallery_type';
+import News from './News';
+import News_type from './News_type';
+import Events from './Events';
+import Achievement from './Achievement';
+import Class from './Classes';
 
-Admin.propTypes = {
-
-};
 
 // change tab pane
 function openLink(animName) {
@@ -138,13 +140,47 @@ function Admin(props) {
                         </div>
                     </div>
                     <div id="ad_news" className="tab w3-animate-right" style={{ display: 'none' }}>
-                        <h2>Slide in from news</h2>
+                        <nav className="admin_tab_title">
+                            <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                                <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#news" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                                    News
+                                </button>
+                                <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#news_type" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                                    News type
+                                </button>
+                            </div>
+                        </nav>
+                        <div className="tab-content" id="nav-tabContent">
+                            <div className="tab-pane fade show active admin_tab_box" id="news" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <News />
+                            </div>
+                            <div className="tab-pane fade admin_tab_box" id="news_type" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <News_type />
+                            </div>
+                        </div>
                     </div>
                     <div id="ad_event" className="tab w3-animate-right" style={{ display: 'none' }}>
-                        <h2>Slide in from event</h2>
+                        <Events />
                     </div>
                     <div id="ad_achievement" className="tab w3-animate-right" style={{ display: 'none' }}>
-                        <h2>Slide in from achievement</h2>
+                        <nav className="admin_tab_title">
+                            <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                                <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#achievement" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                                    Achievements
+                                </button>
+                                <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#class" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                                    Class
+                                </button>
+                            </div>
+                        </nav>
+                        <div className="tab-content" id="nav-tabContent">
+                            <div className="tab-pane fade show active admin_tab_box" id="achievement" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <Achievement />
+                            </div>
+                            <div className="tab-pane fade admin_tab_box" id="class" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <Class />
+                            </div>
+                        </div>
                     </div>
                     <div id="ad_partner" className="tab w3-animate-right" style={{ display: 'none' }}>
                         <Partner />

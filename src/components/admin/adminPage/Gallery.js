@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Gallary = (props) => {
-    const [item, setItem] = useState({ name: '', subtitle: '', content: '', gallery_type_id: '1' });
+    const [item, setItem] = useState({ name: '', subtitle: '', content: '', gallery_type_id: '' });
     const [results, setResults] = useState([]);
+    const [types, setTypes] = useState([]);
     const [message, setMessage] = useState('');
     const [file, setFile] = useState('');
 
@@ -69,6 +70,19 @@ const Gallary = (props) => {
             });
     }
 
+    const getType = () => {
+        axios({
+            method: 'get',
+            url: 'http://localhost:8000/api/gallerytype',
+        })
+            .then((res) => {
+                setTypes(res.data);
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    }
+
     const showUpdate = (item) => {
         setItem(item);
     }
@@ -101,8 +115,6 @@ const Gallary = (props) => {
                 data: item,
             })
                 .then((res) => {
-
-                    console.log(item);
                     if (res.data.status == 200) {
                         setResults(res.data.results);
                     } else {
@@ -130,6 +142,7 @@ const Gallary = (props) => {
 
     useEffect(() => {
         get();
+        getType();
     }, [])
 
     let i = 1;
@@ -148,10 +161,12 @@ const Gallary = (props) => {
                             <input type="file" name="img" className="form-control mb-2" onChange={onChangeImg} />
                             <input type="text" name="subtitle" className="form-control mb-2" onChange={onChange} placeholder="Enter gallery subtitle " />
                             <select name="gallery_type_id" id="#" onChange={onChange} className="mb-2">
-                                <option value="1">Student</option>
-                                <option value="2">Ero Team</option>
-                                <option value="3">Edu Team</option>
-                                <option value="4">IT team</option>
+                                <option value=""></option>
+                                {
+                                    types.map((type, index) => {
+                                        return <option key={index} value={type.id}>{type.type}</option>
+                                    })
+                                }
                             </select>
                             <textarea rows={10} type="content" name="content" className="form-control" onChange={onChange} placeholder="Enter gallery content" />
                         </div>
@@ -200,10 +215,11 @@ const Gallary = (props) => {
                             <input type="file" name="img" className="form-control mb-2" onChange={onChangeImg} />
                             <input type="text" name="subtitle" className="form-control mb-2" defaultValue={item.subtitle} onChange={onChange} placeholder="Enter gallery subtitle " />
                             <select name="gallery_type_id" defaultValue={item.gallery_type_id} className="mb-2" onChange={onChange}>
-                                <option value="1">Student</option>
-                                <option value="2">Ero Team</option>
-                                <option value="3">Edu Team</option>
-                                <option value="4">IT team</option>
+                                {
+                                    types.map((type, index) => {
+                                        return <option key={index} value={type.id}>{type.type}</option>
+                                    })
+                                }
                             </select>
                             <textarea rows={10} type="content" name="content" defaultValue={item.content} className="form-control" onChange={onChange} placeholder="Enter gallery content" />
                         </div>
