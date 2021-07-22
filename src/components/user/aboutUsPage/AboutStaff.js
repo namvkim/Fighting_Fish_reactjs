@@ -1,24 +1,25 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import AboutMenu from './content/ab_menu/AboutMenu';
-import AboutBanner from './content/ab_banner/AboutBanner';
+import StaffBanner from './content/ab_banner/StaffBanner';
 import Footer from '../homePage/content/footer/Footer';
-import Do from './content/do/Do';
+
+import Staff from './content/staff/Staff';
 
 
-AboutUs.propTypes = {
+AboutStaff.propTypes = {
 
 };
 
-function AboutUs(props) {
+function AboutStaff(props) {
     return (
         <Fragment>
             <AboutMenu />
-            <AboutBanner />
-            <Do />
+            <StaffBanner />
+            <Staff />
             <Footer />
         </Fragment>
     );
 }
 
-export default AboutUs;
+export default AboutStaff;

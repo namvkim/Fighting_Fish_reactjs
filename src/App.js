@@ -11,6 +11,10 @@ import Vertification from "./components/admin/vertificationPage/Vertification";
 import Login from "./components/admin/loginPage/Login";
 import Forget from "./components/admin/forgetPage/Forget"
 
+import AboutStaff from './components/user/aboutUsPage/AboutStaff';
+import AboutFinance from './components/user/aboutUsPage/AboutFinance';
+import AboutReport from './components/user/aboutUsPage/AboutReport';
+
 function App(props) {
   const [token, setToken] = useState(true);
   return (
@@ -18,7 +22,7 @@ function App(props) {
       <Switch>
         <Route path="/" exact={true}><Home /></Route>
 
-        <Route path="/aboutUs" exact={true}><AboutUs /></Route>
+        
 
         <Route path="/news" exact={true}><News /></Route>
 
@@ -33,6 +37,16 @@ function App(props) {
         <Route path="/admin" exact={true}>
           {token ? <Admin /> : <Redirect to="/login" />}
         </Route>
+
+
+
+        <Route path="/aboutUs" exact={true}><AboutUs /></Route>
+        <Route path="/staff" exact={true}><AboutStaff/></Route>
+        <Route path="/finance" exact={true}><AboutFinance/></Route>
+        <Route path="/report" exact={true}><AboutReport/></Route>
+
+
+
 
       </Switch>
 
