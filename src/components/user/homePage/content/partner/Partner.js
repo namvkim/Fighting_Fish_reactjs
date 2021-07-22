@@ -13,7 +13,6 @@ function Partner(props) {
       url: 'http://localhost:8000/api/partner',
     })
       .then((res) => {
-        console.log(res.data);
         setResults(res.data);
       })
       .catch((err) => {

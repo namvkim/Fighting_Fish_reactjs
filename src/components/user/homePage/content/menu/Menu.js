@@ -1,12 +1,38 @@
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import axios from 'axios';
 
-Menu.propTypes = {
+const Menu = (props) => {
+  const [item, setItem] = useState('');
+  const [results, setResults] = useState([]);
+  const [message, setMessage] = useState('');
 
-};
+  const onChange = (e) => {
+    const key = e.target.name;
+    const value = e.target.value;
+    const newItem = { ...item, [key]: value };
 
-function Menu(props) {
+    setItem(newItem);
+  }
+
+  const post = (e) => {
+    e.preventDefault();
+    axios({
+      method: 'post',
+      url: '#',
+      data: item,
+    })
+      .then((res) => {
+        if (res.data.status == 200) {
+          setResults(res.data.results);
+        } else {
+          setMessage(res.data.message);
+        }
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
 
   return (
     <Fragment>
@@ -35,15 +61,60 @@ function Menu(props) {
         <div className="modal-dialog modal-xl">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+              <h2 className="modal-title" id="exampleModalLabel">Donate to us</h2>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              aaaaaaaa
+              <div className="form-group">
+                <label htmlFor="transaction_id">Trading code</label>
+                <input className="form-control" id="transaction_id" name="transaction_id" type="text" />
+                <div className="form-group">
+                  <label htmlFor="amount">Amount of money</label>
+                  <input className="form-control" id="amount" name="amount" type="number" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="order_desc">Message</label>
+                  <textarea className="form-control" cols={20} id="order_desc" name="order_desc" rows={2} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="bank_code">Bank</label>
+                  <select name="bank_code" id="bank_code" className="form-control">
+                    <option value>Not selected</option>
+                    <option value="NCB">NCB</option>
+                    <option value="AGRIBANK">Agribank</option>
+                    <option value="SCB">SCB</option>
+                    <option value="SACOMBANK">SacomBank</option>
+                    <option value="EXIMBANK">EximBank</option>
+                    <option value="MSBANK">MSBANK</option>
+                    <option value="NAMABANK">NamABank</option>
+                    <option value="VNMART">VnMart e-wallet</option>
+                    <option value="VIETINBANK">Vietinbank</option>
+                    <option value="VIETCOMBANK">VCB</option>
+                    <option value="HDBANK">HDBank</option>
+                    <option value="DONGABANK">Dong A</option>
+                    <option value="TPBANK">TPBank</option>
+                    <option value="OJB">OceanBank</option>
+                    <option value="BIDV">BIDV</option>
+                    <option value="TECHCOMBANK">Techcombank</option>
+                    <option value="VPBANK">VPBank</option>
+                    <option value="MBBANK">MBBank</option>
+                    <option value="ACB">ACB</option>
+                    <option value="OCB">OCB</option>
+                    <option value="IVB">IVB</option>
+                    <option value="VISA">VISA/MASTER</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="language">language</label>
+                  <select name="language" id="language" className="form-control">
+                    <option value="vn">Vietnamese</option>
+                    <option value="en">English</option>
+                  </select>
+                </div>
+              </div>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+              <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={post}>Confirm</button>
             </div>
           </div>
         </div>

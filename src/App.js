@@ -10,6 +10,7 @@ import SignUp from "./components/admin/signupPage/SignUp"
 import Vertification from "./components/admin/vertificationPage/Vertification";
 import Login from "./components/admin/loginPage/Login";
 import Forget from "./components/admin/forgetPage/Forget"
+import New_detail from './components/user/newsPage/content/new_detail';
 
 function App(props) {
   const [token, setToken] = useState(true);
@@ -21,6 +22,9 @@ function App(props) {
         <Route path="/aboutUs" exact={true}><AboutUs /></Route>
 
         <Route path="/news" exact={true}><News /></Route>
+
+        <Route path="/new_detail" exact={true}><New_detail /></Route>
+
 
         <Route path="/signUp" exact={true}><SignUp /></Route>
 

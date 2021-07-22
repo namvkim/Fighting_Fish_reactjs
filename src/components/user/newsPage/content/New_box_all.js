@@ -32,19 +32,9 @@ function New_box_all(props) {
                 <New_box_item title={title}  image={image} time={time} content={content} />
                 <New_box_item title={title}  image={image} time={time} content={content} />
             </div>
-            {/* <div id="2" className="all_content">
-                <New_box_item title={title}  image={image} time={time} content={content} />
-                <New_box_item title={title}  image={image} time={time} content={content} />
-                <New_box_item title={title}  image={image} time={time} content={content} />
-                <New_box_item title={title}  image={image} time={time} content={content} />
-                <New_box_item title={title}  image={image} time={time} content={content}/>
-                <New_box_item title={title}  image={image} time={time} content={content}/>
-                <New_box_item title={title}  image={image} time={time} content={content}/>
-                <New_box_item title={title}  image={image} time={time} content={content}/>
-                <New_box_item title={title}  image={image} time={time} content={content}/>
-            </div> */}
+            
 
-            <div  className="all_content ">
+            {/* <div  className="all_content ">
                 <div className="all_page ">
                     <div className="all_page_pagination">
                         <a href="#">&laquo;</a>
@@ -58,7 +48,7 @@ function New_box_all(props) {
                     </div>
                 </div>
 
-            </div>
+            </div> */}
              
         </div>
     );
