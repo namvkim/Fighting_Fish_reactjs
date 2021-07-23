@@ -6,12 +6,11 @@
 
 .main {
   max-width: 1230px;
-  margin-top: 10px;
-  margin: auto;
+  margin: 100px auto 0 auto;
 }
 
-.detail h1 {
-  font-size: 48px;
+.detail p {
+  font-size: 40px;
   word-break: break-all;
 }
 

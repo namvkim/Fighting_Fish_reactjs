@@ -23,11 +23,11 @@ function App(props) {
       <Switch>
         <Route path="/" exact={true}><Home /></Route>
 
-        
+
 
         <Route path="/news" exact={true}><News /></Route>
 
-        <Route path="/new_detail" exact={true}><New_detail /></Route>
+        <Route path="/new_detail/:id" exact={true}><New_detail /></Route>
 
 
         <Route path="/signUp" exact={true}><SignUp /></Route>
@@ -45,9 +45,9 @@ function App(props) {
 
 
         <Route path="/aboutUs" exact={true}><AboutUs /></Route>
-        <Route path="/staff" exact={true}><AboutStaff/></Route>
-        <Route path="/finance" exact={true}><AboutFinance/></Route>
-        <Route path="/report" exact={true}><AboutReport/></Route>
+        <Route path="/staff" exact={true}><AboutStaff /></Route>
+        <Route path="/finance" exact={true}><AboutFinance /></Route>
+        <Route path="/report" exact={true}><AboutReport /></Route>
 
 
 

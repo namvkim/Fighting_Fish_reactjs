@@ -9,7 +9,7 @@ About.propTypes = {
 
 function About(props) {
     return (
-        <Layout_homePage title="About Us" id="about" layoutDisplay="flex" link="#">
+        <Layout_homePage title="About Us" id="about" layoutDisplay="flex" link="/aboutUs">
             <div className="about_container">
                 <div className="about_img" style={{ backgroundImage: "url('" + "https://i.ibb.co/2FSJQd4/PNV-2020-XMas2020-Video-2020-XMas-Photos.jpg" + "')" }}></div>
                 <div className="about_content">

@@ -61,11 +61,11 @@ const Menu = (props) => {
             <div className="modal-body">
               <div className="form-group">
                 <label htmlFor="amount">Enter your name</label>
-                <input className="form-control" id="name" required onChange={onChange} name="name" type="text" />
+                <input className="form-control" required onChange={onChange} name="name" type="text" />
               </div>
               <div className="form-group">
                 <label htmlFor="amount">Enter your email</label>
-                <input className="form-control" id="email" required onChange={onChange} name="email" type="text" />
+                <input className="form-control" required onChange={onChange} name="email" type="text" />
               </div>
               <div className="form-group">
                 <label htmlFor="amount">Enter your phone number</label>

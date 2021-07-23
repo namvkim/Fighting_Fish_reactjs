@@ -1,11 +1,34 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-Banner.propTypes = {
+const Banner = (props) => {
+    const [item, setItem] = useState();
+    const [results, setResults] = useState([]);
 
-};
+    const onChange = (e) => {
+        const key = e.target.name;
+        const value = e.target.value;
+        const newItem = { ...item, [key]: value };
 
-function Banner(props) {
+        setItem(newItem);
+    }
+
+    const post = (e) => {
+        e.preventDefault();
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/api/sendEmail',
+            data: item,
+        })
+            .then((res) => {
+                localStorage.setItem('email', res.data);
+                alert('You have successfully followed the site!!');
+            })
+            .catch((err) => {
+                alert("Follow failed! please check your email");
+            });
+    }
+
     return (
         <div className="banner_container" id="home">
             <div className="banner_content">
@@ -17,8 +40,8 @@ function Banner(props) {
                     Passerelles numériques Việt Nam là tổ chức phi chính phủ của Pháp thành lập năm 2010.
                 </div>
                 <div className="banner_content_subcribe">
-                    <input className="banner_input form-control" type="text" placeholder="enter your email"></input>
-                    <input type="button" className="banner_button_subcribe" value="Subcribe"></input>
+                    <input className="banner_input form-control" onChange={onChange} type="email" name="txtEmail" placeholder="enter your email"></input>
+                    <input type="button" className="banner_button_subcribe" onClick={post} value="Follow"></input>
                 </div>
                 <div className="banner_button">
                     <input type="button" className="banner_button_enroll" value="Enrollment" data-bs-toggle="modal" data-bs-target="#banner_model"></input>
@@ -41,8 +64,9 @@ function Banner(props) {
                             <div className="modal-body">
                                 <input type="text" name="name" className="form-control mb-2" placeholder="Enter your name" />
                                 <input type="text" name="phone" className="form-control mb-2" placeholder="Enter your phone" />
+                                <input type="text" name="address" className="form-control mb-2" placeholder="Enter your address" />
                                 <input type="text" name="school" className="form-control mb-2" placeholder="Enter your school name" />
-                                <input type="text" name="phone" className="form-control mb-2" placeholder="Enter your phone" />
+                                <input type="text" name="gender" className="form-control mb-2" placeholder="Enter your gender" />
                                 <input type="text" name="birthDay" className="form-control mb-2" placeholder="Enter your birth day" />
                                 <input type="file" name="img" />
                             </div>

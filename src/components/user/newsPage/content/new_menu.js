@@ -1,26 +1,17 @@
-
-
 import React, { Fragment } from 'react';
-// import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-New_Menu.propTypes = {
-
-};
-
-function New_Menu(props) {
+const New_Menu = (props) => {
   return (
     <Fragment>
       <header id="header" className="d-flex align-items-center">
         <div className="container d-flex align-items-center justify-content-between">
-          <a href="index.html" className="logo"><img src="assets/img/logo/logo-vi.png" alt="" /></a>
+          <Link to="/" className="logo"> <img src="assets/img/logo/logo-vi.png" alt="" /></Link>
           <nav id="navbar" className="navbar">
             <ul>
               <li><a className="nav-link scrollto active" href="#hotnews">Hot news</a></li>
               <li><a className="nav-link scrollto" href="#difficulties">Difficulties</a></li>
               <li><a className="nav-link scrollto" href="#benefactors">Benefactors</a></li>
-            
-              
-              
               <li><button data-hover="clickme">Donation</button></li>
             </ul>
             <i className="bi bi-list mobile-nav-toggle" />

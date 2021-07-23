@@ -24,11 +24,12 @@ function New(props) {
     }, [])
 
     return (
-        <Layout_homePage title="News" id="news" layoutDisplay="flex" link="#">
+        <Layout_homePage title="News" id="news" layoutDisplay="flex" link="/news">
             <div className="new_container ">
                 {results.map((result, index) => {
                     return <New_Item
                         key={index}
+                        id={result.id}
                         img={"url('" + result.img + "')"}
                         title={result.title}
                         introduce={result.shortContent}

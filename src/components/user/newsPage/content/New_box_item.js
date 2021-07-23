@@ -1,61 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-// import ReactDOM from "react-dom";
-// import ReactReadMoreReadLess from "react-read-more-read-less";
 import { Link } from 'react-router-dom';
 
-
-New_box_item.propTypes = {
-    title: PropTypes.string,
-    image: PropTypes.string,
-    time: PropTypes.string,
-    content: PropTypes.string,
-};
-
-New_box_item.defaultProps = {
-    title: '',
-    image: '',
-    time: '',
-    content: '',
-}
-
 function New_box_item(props) {
-    const { title, image, time, content, children } = props;
+    const { result } = props;
+
     return (
         <div className="new_item_containers">
-
-
-            <Link to="/new_detail" style ={{ color:'black'}}>
+            <Link to={"/new_detail/" + result.id} style={{ color: 'black' }}>
                 <div >
-                    <img className="item_image" src={image}
+                    <img className="item_image" src={result.img}
                         style={{ width: '320px', height: '180px' }} />
                 </div>
             </Link>
-
             <div className="item_content_title">
-                <Link to="/new_detail"  style ={{ color:'black'}}>
+                <Link to={"/new_detail/" + result.id} style={{ color: 'black' }}>
 
-                    <div className="item_title">{title} </div>
+                    <div className="item_title">{result.title} </div>
                 </Link>
-                <div className="item_time">{time} </div>
+                <div className="item_time">{result.updated_at} </div>
                 <div className="item_content" >
-                {/* {content} */}
-                   
-                        <div className="item_readMore">
-                        {content}
-                            </div>
-                              <Link to="/new_detail"  >
-                                   <span className="item_readMore_button">Đọc thêm</span>    
-                             </Link> 
-                    {/* <ReactReadMoreReadLess
-                        charLimit={160}
-                        readMoreText={"Đọc thêm"}
-                        // readLessText={"Ẩn bớt"}
-                        readMoreClassName="read-more-less--more"
-                        readLessClassName="read-more-less--less"
-                    >
-                        {content}
-                    </ReactReadMoreReadLess> */}
+                    <div className="item_readMore">
+                        {result.shortContent}
+                    </div>
+                    <Link to={"/new_detail/" + result.id}  >
+                        <span className="item_readMore_button">Đọc thêm</span>
+                    </Link>
                 </div>
                 <div className="item_margin"></div>
             </div>
