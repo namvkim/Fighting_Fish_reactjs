@@ -1,16 +1,4 @@
- 
-  * {
-    padding: 0;
-    margin: 0;
-    font-family: "Open Sans", sans-serif;
-      box-sizing: border-box;
-    } 
 
-  body {
-    background-color: #f1f1f1;
-    padding: 20px;
-    font-family: Arial;
-  }
 
   .content_img {
       width: 900px;
@@ -25,8 +13,8 @@
     margin: auto;
   }
   
-  h1 {
-    font-size: 50px;
+  .detail h1 {
+    font-size: 48px;
     word-break: break-all;
   }
   
@@ -35,11 +23,11 @@
   }
   
   .row,
-  .row > .column {
+  .row > .detail_column {
     padding: 8px;
   }
   
-  .column {
+  .detail_column {
     float: left;
     width: 25%;
   }
@@ -66,13 +54,13 @@
   }
   
   @media screen and (max-width: 900px) {
-    .column {
+    .detail_column {
       width: 50%;
     }
   }
   
   @media screen and (max-width: 600px) {
-    .column {
+    .detail_column {
       width: 100%;
     }
   }
@@ -121,4 +109,49 @@ textarea {
   .icon_return img{
       width: 50px;
       height: 50px;
+  }
+
+  .new_comment_img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50% ;
+
+  }
+
+  .new_comment_image {
+    display: flex;
+    align-items: center;
+  }
+
+  .new_comment_img img {
+    width: 80px;
+    object-fit: cover;
+    vertical-align: middle;
+
+
+  }
+
+  .new_comment {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .new_comment_content {
+    width: 100%;
+    margin-left: 30px;
+  }
+
+  .new_comment_name_content {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px 20px;
+    border: 1px solid black;
+
+   
+  }
+
+  .new_comment_name {
+    font-size: 20px;
+    font-weight: bold;
   }

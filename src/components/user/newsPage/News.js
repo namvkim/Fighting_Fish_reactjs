@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import New_box from './content/New_box';
 import New_menu from './content/new_menu';
 import Footer from '../homePage/content/footer/Footer';
+import New_banner from './content/New_banner';
 
 News.propTypes = {
 
@@ -12,6 +13,7 @@ function News(props) {
     return (
         <Fragment>
             <New_menu />
+            <New_banner />
             <div className="box_container">
 
                 <New_box id="hotnews"
