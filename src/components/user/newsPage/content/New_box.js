@@ -43,7 +43,7 @@ const New_box = (props) => {
         <div id={id} >
             <div className="box_header">
                 <div className="box_title">{title} </div>
-                <div className="new_see_more"
+                {/* <div className="new_see_more"
                     onClick={handleStatusClick}
                 >
                     <div>See more</div>
@@ -51,7 +51,7 @@ const New_box = (props) => {
                         <img className="" src="https://img.flaticon.com/icons/png/512/25/25426.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF"
                             style={{ height: '20px' }} />
                     </div>
-                </div>
+                </div> */}
             </div>
             <hr className="hr" />
             {

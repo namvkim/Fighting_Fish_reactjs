@@ -31,11 +31,11 @@ const New_detail = (props) => {
                     <div className="detail">
                          <p>{results.title}</p>
                     </div>
-                    <div className="d-flex ml-2">
+                    <div className="d-flex ml-2v">
                          <Link to="/news" color="red" >
                               <img src="https://image.flaticon.com/icons/png/512/0/340.png" style={{ height: '20px' }} />
                          </Link>
-                         <p>{results.updated_at}</p>
+                         <p className="detail_date">{results.updated_at}</p>
                     </div>
                     <hr />
                     <div className="content">
@@ -112,11 +112,46 @@ const New_detail = (props) => {
                                    Good job !
                                    Great!!!!
                                    Good job !
-                                   Great!!!!
+                                   
+
+                              </div>
+                         </div>
+                    </div>
+               </div>
+
+               <div className="main_comment">
+                    <div className="new_comment">
+                         <div className="new_comment_image">
+                              <img className="new_comment_img" src="https://baokhanhhoa.vn/dataimages/201909/original/images5377069_hoa.jpg" alt="Nature" />
+                         </div>
+                         <div className="new_comment_content">
+                              <div className="new_comment_name">name</div>
+                              <div className="new_comment_name_content">
                                    Good job !
                                    Great!!!!
                                    Good job !
+                                   Good job !
                                    Great!!!!
+                                   Good job !
+                                   Good job !
+                                   Great!!!!
+                                   Good job !
+                                   Good job !
+                                   Great!!!!
+                                   Good job !
+                                   Good job !
+                                   Great!!!!
+                                   Good job !
+                                   Good job !
+                                   Great!!!!
+                                   Good job !
+                                   Good job !
+                                   Great!!!!
+                                   Good job !
+                                   Good job !
+                                   Great!!!!
+                                   Good job !
+                                   
 
                               </div>
                          </div>
@@ -128,7 +163,7 @@ const New_detail = (props) => {
                               {/* <label htmlFor="subject">Comment</label> */}
                          </div>
                          <div>
-                              <textarea id="subject" name="subject" placeholder="Write something.." style={{ height: '200px' }} defaultValue={""} />
+                              <textarea id="subject" name="subject" placeholder="Write something.." style={{ height: '100px' }} defaultValue={""} />
                          </div>
                          <div>
                               <input type="submit" defaultValue="Submit" />
