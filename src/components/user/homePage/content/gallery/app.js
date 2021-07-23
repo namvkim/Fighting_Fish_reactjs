@@ -1,113 +1,148 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Gallery_react from 'react-grid-gallery';
-import Layout_homePage from '../layout/Layout_homePage';
-// import Gallery from './Gallery2';
-// import CheckButton from './CheckButton';
 import PropTypes from 'prop-types';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Gallery from '../src/Gallery';
+import CheckButton from '../src/CheckButton';
 
-function Gallery(props) {
-    const [results, setResults] = useState([]);
+class Demo0 extends React.Component {
+    constructor(props){
+        super(props);
 
-    const get = () => {
-        axios({
-            method: 'get',
-            url: 'http://localhost:8000/api/gallery',
-        })
-            .then((res) => {
-                setResults(res.data.slice(0, 9));
-            })
-            .catch((err) => {
-                alert(err);
-            });
+        this.state = {
+            images: this.props.images,
+            selectAllChecked: false
+        };
+
+        this.onSelectImage = this.onSelectImage.bind(this);
+        this.getSelectedImages = this.getSelectedImages.bind(this);
+        this.onClickSelectAll = this.onClickSelectAll.bind(this);
     }
 
-    useEffect(() => {
-        get();
-    }, [])
+    allImagesSelected (images){
+        var f = images.filter(
+            function (img) {
+                return img.isSelected == true;
+            }
+        );
+        return f.length == images.length;
+    }
 
-    // constructor(props){
-    //     super(props);
+    onSelectImage (index, image) {
+        var images = this.state.images.slice();
+        var img = images[index];
+        if(img.hasOwnProperty("isSelected"))
+            img.isSelected = !img.isSelected;
+        else
+            img.isSelected = true;
 
-    //     this.state = {
-    //         images: this.props.images,
-    //         selectAllChecked: false
-    //     };
+        this.setState({
+            images: images
+        });
 
-    //     this.onSelectImage = this.onSelectImage.bind(this);
-    //     this.getSelectedImages = this.getSelectedImages.bind(this);
-    //     this.onClickSelectAll = this.onClickSelectAll.bind(this);
-    // }
+        if(this.allImagesSelected(images)){
+            this.setState({
+                selectAllChecked: true
+            });
+        }
+        else {
+            this.setState({
+                selectAllChecked: false
+            });
+        }
+    }
 
-    // allImagesSelected(images){
-    //     var f = images.filter(
-    //         function (img) {
-    //             return img.isSelected == true;
-    //         }
-    //     );
-    //     return f.length == images.length;
-    // }
+    getSelectedImages () {
+        var selected = [];
+        for(var i = 0; i < this.state.images.length; i++)
+            if(this.state.images[i].isSelected == true)
+                selected.push(i);
+        return selected;
+    }
 
-    // onSelectImage(index, image) {
-    //     var images = this.state.images.slice();
-    //     var img = images[index];
-    //     if (img.hasOwnProperty("isSelected"))
-    //         img.isSelected = !img.isSelected;
-    //     else
-    //         img.isSelected = true;
+    onClickSelectAll () {
+        var selectAllChecked = !this.state.selectAllChecked;
+        this.setState({
+            selectAllChecked: selectAllChecked
+        });
 
-    //     this.setState({
-    //         images: images
-    //     });
+        var images = this.state.images.slice();
+        if(selectAllChecked){
+            for(var i = 0; i < this.state.images.length; i++)
+                images[i].isSelected = true;
+        }
+        else {
+            for(var i = 0; i < this.state.images.length; i++)
+                images[i].isSelected = false;
 
-    //     if (this.allImagesSelected(images)) {
-    //         this.setState({
-    //             selectAllChecked: true
-    //         });
-    //     }
-    //     else {
-    //         this.setState({
-    //             selectAllChecked: false
-    //         });
-    //     }
-    // }
+        }
+        this.setState({
+            images: images
+        });
+    }
 
-    // getSelectedImages() {
-    //     var selected = [];
-    //     for (var i = 0; i < this.state.images.length; i++)
-    //         if (this.state.images[i].isSelected == true)
-    //             selected.push(i);
-    //     return selected;
-    // }
+    render () {
+        return (
+                <div>
+                <CheckButton
+            index={0}
+            isSelected={this.state.selectAllChecked}
+            onClick={this.onClickSelectAll}
+            parentHover={true}
+            color={"rgba(0,0,0,0.54)"}
+            selectedColor={"#4285f4"}
+            hoverColor={"rgba(0,0,0,0.54)"}/>
+                <div style={{
+                    height: "36px",
+                    display: "flex",
+                    alignItems: "center"
+                }}>
+                select all
+                </div>
+                <div style={{
+                    padding: "2px",
+                    color: "#666"
+                }}>Selected images: {this.getSelectedImages().toString()}</div>
+                <div style={{
+                    display: "block",
+                    minHeight: "1px",
+                    width: "100%",
+                    border: "1px solid #ddd",
+                    overflow: "auto"}}>
+                <Gallery
+            images={this.state.images}
+            onSelectImage={this.onSelectImage}
+            showLightboxThumbnails={true}/>
+                </div>
+                </div>
+        );
+    }
+}
 
-    // onClickSelectAll() {
-    //     var selectAllChecked = !this.state.selectAllChecked;
-    //     this.setState({
-    //         selectAllChecked: selectAllChecked
-    //     });
+Demo0.propTypes = {
+    images: PropTypes.arrayOf(
+        PropTypes.shape({
+            src: PropTypes.string.isRequired,
+            thumbnail: PropTypes.string.isRequired,
+            srcset: PropTypes.array,
+            caption: PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.element
+            ]),
+            thumbnailWidth: PropTypes.number.isRequired,
+            thumbnailHeight: PropTypes.number.isRequired,
+            isSelected: PropTypes.bool
+        })
+    ).isRequired
+};
 
-    //     var images = this.state.images.slice();
-    //     if (selectAllChecked) {
-    //         for (var i = 0; i < this.state.images.length; i++)
-    //             images[i].isSelected = true;
-    //     }
-    //     else {
-    //         for (var i = 0; i < this.state.images.length; i++)
-    //             images[i].isSelected = false;
-
-    //     }
-    //     this.setState({
-    //         images: images
-    //     });
-    // }
-
-    const images = [
+Demo0.defaultProps = {
+    images: shuffleArray([
         {
             src: "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_b.jpg",
             thumbnail: "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_n.jpg",
             thumbnailWidth: 320,
             thumbnailHeight: 174,
-            tags: [{ value: "Nature", title: "Nature" }, { value: "Flora", title: "Flora" }],
+            tags: [{value: "Nature", title: "Nature"}, {value: "Flora", title: "Flora"}],
             caption: "After Rain (Jeshu John - designerspics.com)"
         },
         {
@@ -143,7 +178,7 @@ function Gallery(props) {
             thumbnail: "https://c5.staticflickr.com/9/8768/28941110956_b05ab588c1_n.jpg",
             thumbnailWidth: 240,
             thumbnailHeight: 320,
-            tags: [{ value: "Nature", title: "Nature" }],
+            tags: [{value: "Nature", title: "Nature"}],
             caption: "8H (gratisography.com)"
         },
         {
@@ -158,7 +193,7 @@ function Gallery(props) {
             thumbnail: "https://c7.staticflickr.com/9/8569/28941134686_d57273d933_n.jpg",
             thumbnailWidth: 320,
             thumbnailHeight: 148,
-            tags: [{ value: "People", title: "People" }],
+            tags: [{value: "People", title: "People"}],
             caption: "315H (gratisography.com)"
         },
         {
@@ -182,7 +217,7 @@ function Gallery(props) {
             thumbnail: "https://c7.staticflickr.com/9/8785/28687743710_3580fcb5f0_n.jpg",
             thumbnailWidth: 320,
             thumbnailHeight: 113,
-            tags: [{ value: "People", title: "People" }],
+            tags: [{value: "People", title: "People"}],
             caption: "Red Zone - Paris (Tom Eversley - isorepublic.com)"
         },
         {
@@ -227,7 +262,7 @@ function Gallery(props) {
             thumbnail: "https://c1.staticflickr.com/9/8330/28941240416_71d2a7af8e_n.jpg",
             thumbnailWidth: 320,
             thumbnailHeight: 213,
-            tags: [{ value: "Nature", title: "Nature" }, { value: "People", title: "People" }],
+            tags: [{value: "Nature", title: "Nature"}, {value: "People", title: "People"}],
             caption: "Surfer Sunset (Tom Eversley - isorepublic.com)"
         },
         {
@@ -235,7 +270,7 @@ function Gallery(props) {
             thumbnail: "https://c1.staticflickr.com/9/8707/28868704912_cba5c6600e_n.jpg",
             thumbnailWidth: 320,
             thumbnailHeight: 213,
-            tags: [{ value: "People", title: "People" }, { value: "Sport", title: "Sport" }],
+            tags: [{value: "People", title: "People"}, {value: "Sport", title: "Sport"}],
             caption: "Man on BMX (Tom Eversley - isorepublic.com)"
         },
         {
@@ -257,7 +292,7 @@ function Gallery(props) {
             thumbnail: "https://c6.staticflickr.com/9/8593/28357129133_f04c73bf1e_n.jpg",
             thumbnailWidth: 320,
             thumbnailHeight: 179,
-            tags: [{ value: "Nature", title: "Nature" }, { value: "Fauna", title: "Fauna" }],
+            tags: [{value: "Nature", title: "Nature"}, {value: "Fauna", title: "Fauna"}],
             caption: "Untitled (Jan Vasek - jeshoots.com)"
         },
         {
@@ -265,7 +300,7 @@ function Gallery(props) {
             thumbnail: "https://c6.staticflickr.com/9/8893/28897116141_641b88e342_n.jpg",
             thumbnailWidth: 320,
             thumbnailHeight: 215,
-            tags: [{ value: "People", title: "People" }],
+            tags: [{value: "People", title: "People"}],
             caption: "Untitled (moveast.me)"
         },
         {
@@ -282,84 +317,8 @@ function Gallery(props) {
             thumbnailHeight: 320,
             caption: "A photo by Matthew Wiebe. (unsplash.com)"
         }
-    ];
-
-    return (
-        <Gallery
-            images={images}
-            // onSelectImage={this.onSelectImage}
-            showLightboxThumbnails={true} />
-    );
-
-
-
-    // Gallery.propTypes = {
-    //     images: PropTypes.arrayOf(
-    //         PropTypes.shape({
-    //             src: PropTypes.string.isRequired,
-    //             thumbnail: PropTypes.string.isRequired,
-    //             srcset: PropTypes.array,
-    //             caption: PropTypes.oneOfType([
-    //                 PropTypes.string,
-    //                 PropTypes.element
-    //             ]),
-    //             thumbnailWidth: PropTypes.number.isRequired,
-    //             thumbnailHeight: PropTypes.number.isRequired,
-    //             isSelected: PropTypes.bool
-    //         })
-    //     ).isRequired
-    // };
-
-
-
+    ]).splice(0,16)
 };
 
-//     return (
-//         <Layout_homePage title="Our Gallery" id="gallery">
-//             <Gallery_react images={IMAGES} />
-//             {/* <div id="portfolio" className="portfolio">
-//                 <div className="container" data-aos="fade-up">
-//                     <div className="row" data-aos="fade-up" data-aos-delay="100">
-//                         <div className="col-lg-12 d-flex justify-content-center">
-//                             <ul id="portfolio-flters">
-//                                 <li data-filter=".filter-ero">Ero Team</li>
-//                                 <li data-filter=".filter-edu">Edu Team</li>
-//                                 <li data-filter=".filter-it">IT Team</li>
-//                                 <li data-filter=".filter-students">Students</li>
-//                                 <li data-filter="*" className="filter-active">All</li>
-//                             </ul>
-//                         </div>
-//                     </div>
 
-//                     <div
-//                         className="row portfolio-container"
-//                         data-aos="fade-up"
-//                         data-aos-delay="200"
-//                     >
-//                         {
-//                             results.map((result, index) => {
-//                                 return <div key={index} className="col-lg-4 col-md-6 portfolio-item filter-students">
-//                                     <a
-//                                         href="assets/img/gallery/portfolio-1.jpg"
-//                                         data-gallery="portfolioGallery"
-//                                         className="portfolio-lightbox preview-link"
-//                                         title="App 12"
-//                                     >
-//                                         <img
-//                                             src="assets/img/gallery/portfolio-1.jpg"
-//                                             className="img-fluid"
-//                                             alt=""
-//                                         />
-//                                     </a>
-//                                     <div className="portfolio-info">title1</div>
-//                                 </div>
-//                             })
-//                         }
-//                     </div>
-//                 </div>
-//             </div> */}
-//         </Layout_homePage>
-//     );
-// }
-
-export default Gallery;
+ReactDOM.render(<Demo0 />, document.getElementById('demo0'));

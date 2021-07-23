@@ -1,12 +1,27 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Layout_homePage from '../layout/Layout_homePage';
 
-Achievement.propTypes = {
+const Achievement = (props) => {
+    const [results, setResults] = useState([]);
 
-};
+    const get = () => {
+        axios({
+            method: 'get',
+            url: 'http://localhost:8000/api/achievement',
+        })
+            .then((res) => {
+                setResults(res.data);
+                console.log(res.data);
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    }
 
-function Achievement(props) {
+    useEffect(() => {
+        get();
+    }, [])
     return (
         <Layout_homePage title="Student Achievement" id="achievement">
             <div className="achievement_container">

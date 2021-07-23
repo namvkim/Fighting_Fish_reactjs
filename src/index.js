@@ -6,7 +6,7 @@ import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />,
+    <App />
     <MessengerCustomerChat
       pageId="102076778813927"
       appId="1891428137685135"

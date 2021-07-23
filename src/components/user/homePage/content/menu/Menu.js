@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Menu = (props) => {
-  const [item, setItem] = useState('');
-  const [results, setResults] = useState([]);
-  const [message, setMessage] = useState('');
+  const [item, setItem] = useState({ language: 'vn', bank_code: '', order_desc: '' });
 
   const onChange = (e) => {
     const key = e.target.name;
@@ -19,15 +17,11 @@ const Menu = (props) => {
     e.preventDefault();
     axios({
       method: 'post',
-      url: '#',
+      url: 'http://127.0.0.1:8000/api/vnPay',
       data: item,
     })
       .then((res) => {
-        if (res.data.status == 200) {
-          setResults(res.data.results);
-        } else {
-          setMessage(res.data.message);
-        }
+        window.location = res.data;
       })
       .catch((err) => {
         alert(err);
@@ -66,51 +60,63 @@ const Menu = (props) => {
             </div>
             <div className="modal-body">
               <div className="form-group">
-                <label htmlFor="transaction_id">Trading code</label>
-                <input className="form-control" id="transaction_id" name="transaction_id" type="text" />
-                <div className="form-group">
-                  <label htmlFor="amount">Amount of money</label>
-                  <input className="form-control" id="amount" name="amount" type="number" />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="order_desc">Message</label>
-                  <textarea className="form-control" cols={20} id="order_desc" name="order_desc" rows={2} />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="bank_code">Bank</label>
-                  <select name="bank_code" id="bank_code" className="form-control">
-                    <option value>Not selected</option>
-                    <option value="NCB">NCB</option>
-                    <option value="AGRIBANK">Agribank</option>
-                    <option value="SCB">SCB</option>
-                    <option value="SACOMBANK">SacomBank</option>
-                    <option value="EXIMBANK">EximBank</option>
-                    <option value="MSBANK">MSBANK</option>
-                    <option value="NAMABANK">NamABank</option>
-                    <option value="VNMART">VnMart e-wallet</option>
-                    <option value="VIETINBANK">Vietinbank</option>
-                    <option value="VIETCOMBANK">VCB</option>
-                    <option value="HDBANK">HDBank</option>
-                    <option value="DONGABANK">Dong A</option>
-                    <option value="TPBANK">TPBank</option>
-                    <option value="OJB">OceanBank</option>
-                    <option value="BIDV">BIDV</option>
-                    <option value="TECHCOMBANK">Techcombank</option>
-                    <option value="VPBANK">VPBank</option>
-                    <option value="MBBANK">MBBank</option>
-                    <option value="ACB">ACB</option>
-                    <option value="OCB">OCB</option>
-                    <option value="IVB">IVB</option>
-                    <option value="VISA">VISA/MASTER</option>
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="language">language</label>
-                  <select name="language" id="language" className="form-control">
-                    <option value="vn">Vietnamese</option>
-                    <option value="en">English</option>
-                  </select>
-                </div>
+                <label htmlFor="amount">Enter your name</label>
+                <input className="form-control" id="name" required onChange={onChange} name="name" type="text" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="amount">Enter your email</label>
+                <input className="form-control" id="email" required onChange={onChange} name="email" type="text" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="amount">Enter your phone number</label>
+                <input className="form-control" id="phone" required onChange={onChange} name="phone" type="text" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="amount">Enter your address</label>
+                <input className="form-control" id="address" required onChange={onChange} name="address" type="text" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="amount">Amount of money</label>
+                <input className="form-control" id="amount" required onChange={onChange} name="amount" type="number" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="order_desc">Message</label>
+                <textarea className="form-control" cols={20} id="order_desc" onChange={onChange} name="order_desc" rows={2} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="bank_code">Bank</label>
+                <select name="bank_code" id="bank_code" onChange={onChange} className="form-control">
+                  <option value="">Not selected</option>
+                  <option value="NCB">NCB</option>
+                  <option value="AGRIBANK">Agribank</option>
+                  <option value="SCB">SCB</option>
+                  <option value="SACOMBANK">SacomBank</option>
+                  <option value="EXIMBANK">EximBank</option>
+                  <option value="MSBANK">MSBANK</option>
+                  <option value="NAMABANK">NamABank</option>
+                  <option value="VNMART">VnMart e-wallet</option>
+                  <option value="VIETINBANK">Vietinbank</option>
+                  <option value="VIETCOMBANK">VCB</option>
+                  <option value="HDBANK">HDBank</option>
+                  <option value="DONGABANK">Dong A</option>
+                  <option value="TPBANK">TPBank</option>
+                  <option value="OJB">OceanBank</option>
+                  <option value="BIDV">BIDV</option>
+                  <option value="TECHCOMBANK">Techcombank</option>
+                  <option value="VPBANK">VPBank</option>
+                  <option value="MBBANK">MBBank</option>
+                  <option value="ACB">ACB</option>
+                  <option value="OCB">OCB</option>
+                  <option value="IVB">IVB</option>
+                  <option value="VISA">VISA/MASTER</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="language">language</label>
+                <select name="language" id="language" onChange={onChange} className="form-control">
+                  <option value="vn">Vietnamese</option>
+                  <option value="en">English</option>
+                </select>
               </div>
             </div>
             <div className="modal-footer">

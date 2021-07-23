@@ -32,7 +32,7 @@ const Home = (props) => {
             <Event />
             <Achievement />
             <Partner />
-            <Gallery />
+            {/* <Gallery /> */}
             <New />
             <Contact />
             <Footer />

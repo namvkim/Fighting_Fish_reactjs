@@ -13,7 +13,6 @@ function New(props) {
         })
             .then((res) => {
                 setResults(res.data.slice(0, 3));
-                console.log(res.data);
             })
             .catch((err) => {
                 alert(err);

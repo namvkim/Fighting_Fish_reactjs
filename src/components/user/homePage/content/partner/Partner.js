@@ -46,7 +46,7 @@ function Partner(props) {
 
   return (
     <Layout_homePage title="Our Partners" id="partner">
-      <Carousel responsive={responsive} autoPlaySpeed={4000} autoPlay={true}>
+      <Carousel responsive={responsive} autoPlaySpeed={2000} autoPlay={true} infinite={true}>
         {results.map((item, index) => {
           return (
             <div key={index} className="partner_item">

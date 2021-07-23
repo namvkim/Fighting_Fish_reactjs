@@ -13,6 +13,8 @@
     "owl.carousel": "^2.3.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-grid-gallery": "^0.5.5",
+    "react-image": "^4.0.3",
     "react-messenger-customer-chat": "^0.8.0",
     "react-multi-carousel": "^2.6.3",
     "react-read-more-read-less": "^1.0.7",
