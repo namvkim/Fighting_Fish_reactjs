@@ -1,24 +1,25 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import AboutMenu from './content/ab_menu/AboutMenu';
-import AboutBanner from './content/ab_banner/AboutBanner';
+import FinanceBanner from './content/ab_banner/FinanceBanner';
 import Footer from '../homePage/content/footer/Footer';
-import Do from './content/do/Do';
+
+import Finance from './content/finance/Finance';
 
 
-AboutUs.propTypes = {
+AboutFinance.propTypes = {
 
 };
 
-function AboutUs(props) {
+function AboutFinance(props) {
     return (
         <Fragment>
             <AboutMenu />
-            <AboutBanner />
-            <Do />
+            <FinanceBanner />
+            <Finance/>
             <Footer />
         </Fragment>
     );
 }
 
-export default AboutUs;
+export default AboutFinance;
