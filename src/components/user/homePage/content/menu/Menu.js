@@ -60,19 +60,19 @@ const Menu = (props) => {
             </div>
             <div className="modal-body">
               <div className="form-group">
-                <label htmlFor="amount">Enter your name</label>
+                <label htmlFor="amount">Name</label>
                 <input className="form-control" required onChange={onChange} name="name" type="text" />
               </div>
               <div className="form-group">
-                <label htmlFor="amount">Enter your email</label>
+                <label htmlFor="amount">Email</label>
                 <input className="form-control" required onChange={onChange} name="email" type="text" />
               </div>
               <div className="form-group">
-                <label htmlFor="amount">Enter your phone number</label>
+                <label htmlFor="amount">Phone number</label>
                 <input className="form-control" id="phone" required onChange={onChange} name="phone" type="text" />
               </div>
               <div className="form-group">
-                <label htmlFor="amount">Enter your address</label>
+                <label htmlFor="amount">Address</label>
                 <input className="form-control" id="address" required onChange={onChange} name="address" type="text" />
               </div>
               <div className="form-group">
@@ -120,7 +120,7 @@ const Menu = (props) => {
               </div>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={post}>Confirm</button>
+              <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={post}>Submit</button>
             </div>
           </div>
         </div>

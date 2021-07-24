@@ -160,7 +160,6 @@ const Partner = (props) => {
                     <th>Name</th>
                     <th>Link</th>
                     <th>Image</th>
-                    <th>Content</th>
                     <th>Fix</th>
                 </tr></thead>
                 <tbody>
@@ -170,7 +169,6 @@ const Partner = (props) => {
                             <td>{result.name}</td>
                             <td><a href={result.link}>{result.link}</a></td>
                             <td><img className="ad_table_img" src={result.img}></img></td>
-                            <td>{result.content}</td>
                             <td><button data-bs-toggle="modal" data-bs-target="#updateModel" onClick={() => showUpdate(result)}>update</button>
                                 <button onClick={() => del(result.id)}>delete</button></td>
                         </tr>

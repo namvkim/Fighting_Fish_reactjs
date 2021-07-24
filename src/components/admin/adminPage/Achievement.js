@@ -190,8 +190,6 @@ const Achievement = (props) => {
                     <th>Technology</th>
                     <th>Image</th>
                     <th>Link</th>
-                    <th>Short Content</th>
-                    <th>Content</th>
                     <th>Fix</th>
                 </tr></thead>
                 <tbody>
@@ -204,8 +202,6 @@ const Achievement = (props) => {
                             <td>{result.technology}</td>
                             <td><img className="ad_table_img" src={result.img}></img></td>
                             <td><a src={result.link}>{result.link}</a></td>
-                            <td>{result.shortContent}</td>
-                            <td>{result.content}</td>
                             <td><button data-bs-toggle="modal" data-bs-target="#updateAchievement" onClick={() => showUpdate(result)}>update</button>
                                 <button onClick={() => del(result.id)}>delete</button></td>
                         </tr>

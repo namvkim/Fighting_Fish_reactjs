@@ -1,12 +1,32 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Layout_homePage from '../layout/Layout_homePage';
 
-Contact.propTypes = {
+const Contact = (props) => {
+  const [item, setItem] = useState();
+  const onChange = (e) => {
+    const key = e.target.name;
+    const value = e.target.value;
+    const newItem = { ...item, [key]: value };
 
-};
+    setItem(newItem);
+  }
+  const post = (e) => {
+    e.preventDefault();
+    axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/sendEmailContact',
+      data: item,
+    })
+      .then((res) => {
+        localStorage.setItem('email', res.data);
+        alert('You have successfully Contact the site!!');
+      })
+      .catch((err) => {
+        alert("Contact failed! please check your email");
+      });
+  }
 
-function Contact(props) {
   return (
     <Layout_homePage title="Contact Us" id="contact">
       <section className="contact">
@@ -42,19 +62,19 @@ function Contact(props) {
               <form action="forms/contact.php" method="post" role="form" className="php-email-form">
                 <div className="row">
                   <div className="col form-group">
-                    <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" required />
+                    <input type="text" name="name" className="form-control" onChange={onChange} id="name" placeholder="Your Name" required />
                   </div>
                   <div className="col form-group">
-                    <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" required />
+                    <input type="email" className="form-control" name="email" onChange={onChange} id="email" placeholder="Your Email" required />
                   </div>
                 </div>
                 <div className="form-group">
-                  <input type="text" className="form-control" name="subject" id="subject" placeholder="Subject" required />
+                  <input type="text" className="form-control" name="title" onChange={onChange} id="subject" placeholder="Subject" required />
                 </div>
                 <div className="form-group">
-                  <textarea className="form-control" name="message" rows={5} placeholder="Message" required defaultValue={""} />
+                  <textarea className="form-control" name="message" onChange={onChange} rows={5} placeholder="Message" required defaultValue={""} />
                 </div>
-                <div className="text-center"><button type="submit">Send Message</button></div>
+                <div className="text-center"><button onClick={post}>Send Message</button></div>
               </form>
             </div>
           </div>

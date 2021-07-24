@@ -11,6 +11,7 @@ import News_type from './News_type';
 import Events from './Events';
 import Achievement from './Achievement';
 import Class from './Classes';
+import Enroll from './Enroll';
 
 
 // change tab pane
@@ -24,6 +25,11 @@ function openLink(animName) {
 }
 
 function Admin(props) {
+    const logOut = () => {
+        localStorage.removeItem("token");
+        window.location = "http://localhost:3000/login";
+    }
+
     return (
         <div>
             <div className="admin_container" id="admin_body-pd">
@@ -44,11 +50,11 @@ function Admin(props) {
                                 <span className="admin_nav_logo-name">User Interface</span>
                             </a>
                             <div className="nav_list">
-                                <a href="#" onClick={() => openLink('ad_dashboard')} className="admin_nav_link admin_active">
+                                {/* <a href="#" onClick={() => openLink('ad_dashboard')} className="admin_nav_link admin_active">
                                     <i className="bx bx-grid-alt admin_nav_icon" />
                                     <span className="nav_name">Dashboard</span>
-                                </a>
-                                <a href="#" onClick={() => openLink('ad_users')} className="admin_nav_link">
+                                </a> */}
+                                <a href="#" onClick={() => openLink('ad_users')} className="admin_nav_link admin_active">
                                     <i className="bx bx-user admin_nav_icon" />
                                     <span className="nav_name">Users</span>
                                 </a>
@@ -82,7 +88,7 @@ function Admin(props) {
                                 </a>
                             </div>
                         </div>
-                        <a href="#" className="admin_nav_link">
+                        <a href="#" onClick={logOut} className="admin_nav_link">
                             <i className="bx bx-log-out admin_nav_icon" />
                             <span className="nav_name">SignOut</span>
                         </a>
@@ -90,10 +96,10 @@ function Admin(props) {
                 </div>
                 {/*Container Main start*/}
                 <div className="admin_height-100 bg-light">
-                    <div id="ad_dashboard" className="tab w3-animate-right">
+                    {/* <div id="ad_dashboard" className="tab w3-animate-right">
                         <h2>Slide in from dashboard</h2>
-                    </div>
-                    <div id="ad_users" className="tab w3-animate-right" style={{ display: 'none' }}>
+                    </div> */}
+                    <div id="ad_users" className="tab w3-animate-right">
                         <nav className="admin_tab_title">
                             <div className="nav nav-tabs" id="nav-tab" role="tablist">
                                 <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#visited" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
@@ -104,6 +110,9 @@ function Admin(props) {
                                 </button>
                                 <button className="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#donated" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
                                     Donated
+                                </button>
+                                <button className="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#enroll" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
+                                    Enrollment
                                 </button>
                             </div>
                         </nav>
@@ -116,6 +125,9 @@ function Admin(props) {
                             </div>
                             <div className="tab-pane fade admin_tab_box" id="donated" role="tabpanel" aria-labelledby="nav-contact-tab">
                                 <Donated />
+                            </div>
+                            <div className="tab-pane fade admin_tab_box" id="enroll" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                <Enroll />
                             </div>
                         </div>
                     </div>

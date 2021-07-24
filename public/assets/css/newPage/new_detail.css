@@ -86,13 +86,13 @@ input[type="submit"]:hover {
 }
 
 .main_comment {
-  display: flex;
-  flex-direction: column;
   max-width: 1230px;
   margin: auto;
+  margin-top: 60px;
 }
 
 .main_comment_form {
+  margin: auto;
   margin-bottom: 50px;
 }
 .icon_return {
@@ -105,42 +105,24 @@ input[type="submit"]:hover {
   height: 50px;
 }
 
-.new_comment_img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-}
-
-.new_comment_image {
-  display: flex;
-  align-items: center;
-}
-
-.new_comment_img img {
-  width: 80px;
-  object-fit: cover;
-  vertical-align: middle;
-}
-
 .new_comment {
-  display: flex;
-  justify-content: space-between;
+  margin-top: 30px;
 }
 
 .new_comment_content {
+  margin-top: 60px;
   width: 100%;
-  margin-left: 30px;
 }
 
 .new_comment_name_content {
-  margin-top: 20px;
-  padding: 20px;
+  padding: 10px 20px;
   background-color: white;
-  border-radius: 20px 20px;
   border: 1px solid black;
+  margin-top: 5px;
 }
 
 .new_comment_name {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
+  border-bottom: 1px solid gray;
 }

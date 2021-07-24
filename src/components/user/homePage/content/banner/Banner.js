@@ -3,7 +3,8 @@ import axios from 'axios';
 
 const Banner = (props) => {
     const [item, setItem] = useState();
-    const [results, setResults] = useState([]);
+    const [enroll, setEnroll] = useState();
+    const [file, setFile] = useState('');
 
     const onChange = (e) => {
         const key = e.target.name;
@@ -12,6 +13,34 @@ const Banner = (props) => {
 
         setItem(newItem);
     }
+    const onErollChange = (e) => {
+        const key = e.target.name;
+        const value = e.target.value;
+        const newEnroll = { ...enroll, [key]: value };
+
+        setEnroll(newEnroll);
+    }
+
+    const onChangeImg = (e) => {
+        setFile(e.target.files[0]);
+    }
+
+    const uploadImage = (img) => {
+        const body = new FormData();
+        body.append('key', '84969e46479194605dee705296fc7686');
+        body.append('image', img);
+        return axios({
+            method: 'post',
+            url: 'https://api.imgbb.com/1/upload',
+            data: body,
+            headers: {
+                'content-type': 'multipart/form-data',
+            }
+        }).then((res) => {
+            return res.data.data.display_url;
+        }).catch(() => false);
+    };
+
 
     const post = (e) => {
         e.preventDefault();
@@ -22,12 +51,31 @@ const Banner = (props) => {
         })
             .then((res) => {
                 localStorage.setItem('email', res.data);
-                alert('You have successfully followed the site!!');
+                alert('You have successfully Subscribe the site!!');
             })
             .catch((err) => {
-                alert("Follow failed! please check your email");
+                alert("Subscribe failed! please check your email");
             });
     }
+
+    const postEnroll = (e) => {
+        e.preventDefault();
+        uploadImage(file).then((res) => {
+            const newEnroll = { ...enroll, img: res };
+            axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/api/enroll',
+                data: newEnroll,
+            })
+                .then((res) => {
+                    localStorage.setItem('email', res.data);
+                    alert('You have successfully Enroll !!');
+                })
+                .catch((err) => {
+                    alert("Enroll failed! please check your email");
+                });
+        });
+    };
 
     return (
         <div className="banner_container" id="home">
@@ -37,11 +85,11 @@ const Banner = (props) => {
                     Welcome to <span className="banner_content_title_span1">PNV</span>
                 </div>
                 <div className="banner_content_info">
-                    Passerelles numériques Việt Nam là tổ chức phi chính phủ của Pháp thành lập năm 2010.
+                    Passerelles numériques Vietnam is a French NGO established in 2010.
                 </div>
                 <div className="banner_content_subcribe">
-                    <input className="banner_input form-control" onChange={onChange} type="email" name="txtEmail" placeholder="enter your email"></input>
-                    <input type="button" className="banner_button_subcribe" onClick={post} value="Follow"></input>
+                    <input className="banner_input form-control" onChange={onChange} type="email" name="txtEmail" placeholder="Email"></input>
+                    <input type="button" className="banner_button_subcribe" onClick={post} value="Subscribe"></input>
                 </div>
                 <div className="banner_button">
                     <input type="button" className="banner_button_enroll" value="Enrollment" data-bs-toggle="modal" data-bs-target="#banner_model"></input>
@@ -62,16 +110,16 @@ const Banner = (props) => {
                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div className="modal-body">
-                                <input type="text" name="name" className="form-control mb-2" placeholder="Enter your name" />
-                                <input type="text" name="phone" className="form-control mb-2" placeholder="Enter your phone" />
-                                <input type="text" name="address" className="form-control mb-2" placeholder="Enter your address" />
-                                <input type="text" name="school" className="form-control mb-2" placeholder="Enter your school name" />
-                                <input type="text" name="gender" className="form-control mb-2" placeholder="Enter your gender" />
-                                <input type="text" name="birthDay" className="form-control mb-2" placeholder="Enter your birth day" />
-                                <input type="file" name="img" />
+                                <input type="text" name="name" onChange={onErollChange} required className="form-control mb-2" placeholder="Name" />
+                                <input type="text" name="phone" onChange={onErollChange} required className="form-control mb-2" placeholder="Phone" />
+                                <input type="text" name="school" onChange={onErollChange} required className="form-control mb-2" placeholder="School" />
+                                <input type="text" name="email" onChange={onErollChange} required className="form-control mb-2" placeholder="Email" />
+                                <input type="text" name="address" onChange={onErollChange} required className="form-control mb-2" placeholder="Address" />
+                                <input type="text" name="circumstance" onChange={onErollChange} required className="form-control mb-2" placeholder="Circumstance" />
+                                <input type="file" name="img" onChange={onChangeImg} />
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                                <button type="button" className="btn btn-primary" onClick={postEnroll} data-bs-dismiss="modal">Submit</button>
                             </div>
                         </div>
                     </div>

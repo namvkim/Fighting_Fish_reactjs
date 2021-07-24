@@ -184,8 +184,6 @@ function News(props) {
                     <th>Type</th>
                     <th>Title</th>
                     <th>Image</th>
-                    <th>Short Content</th>
-                    <th>Content</th>
                     <th>Fix</th>
                 </tr></thead>
                 <tbody>
@@ -195,8 +193,6 @@ function News(props) {
                             <td>{result.type}</td>
                             <td>{result.title}</td>
                             <td><img className="ad_table_img" src={result.img}></img></td>
-                            <td>{result.shortContent}</td>
-                            <td>{result.content}</td>
                             <td><button data-bs-toggle="modal" data-bs-target="#updateNews" onClick={() => showUpdate(result)}>update</button>
                                 <button onClick={() => del(result.id)}>delete</button></td>
                         </tr>

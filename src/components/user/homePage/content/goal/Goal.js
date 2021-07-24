@@ -8,7 +8,7 @@ Goal.propTypes = {
 
 function Goal(props) {
     return (
-        <Layout_homePage title="Our Target">
+        <Layout_homePage >
             <div className="goal_container">
                 <Goal_item img="/assets/img/goal/goals.png" content="PNV has been carrying out activities to develop and contribute to The Sustainable Development Goals (SDGs)." box="goal_item_box" />
                 <Goal_item img="/assets/img/goal/noPoverty.png" content="At least 90% of the students enrolled in our programs can escape poverty, be professionally more successful relatively to the national average." />

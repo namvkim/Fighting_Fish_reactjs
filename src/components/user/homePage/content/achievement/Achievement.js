@@ -5,68 +5,70 @@ import Layout_homePage from '../layout/Layout_homePage';
 const Achievement = (props) => {
     const [results, setResults] = useState([]);
 
-    const get = () => {
-        axios({
-            method: 'get',
-            url: 'http://localhost:8000/api/achievement',
-        })
-            .then((res) => {
-                setResults(res.data);
-                console.log(res.data);
-            })
-            .catch((err) => {
-                alert(err);
-            });
+    const [index, setIndex] = useState(0);
+
+    const plus = () => {
+        setIndex(index + 1);
+    }
+    const minus = () => {
+        setIndex(index - 1);
     }
 
-    useEffect(() => {
-        get();
-    }, [])
+    console.log(index);
+
+    // const get = () => {
+    //     axios({
+    //         method: 'get',
+    //         url: 'http://localhost:8000/api/achievement',
+    //     })
+    //         .then((res) => {
+    //             setResults(res.data);
+    //             console.log(res.data);
+    //         })
+    //         .catch((err) => {
+    //             alert(err);
+    //         });
+    // }
+
+    // useEffect(() => {
+    //     get();
+    // }, [])
+
     return (
         <Layout_homePage title="Student Achievement" id="achievement">
             <div className="achievement_container">
                 <div className="shell">
                     {/* Tab panes*/}
                     <div className="layout-horizontal layout-horizontal_md-reverse">
-                        <div className="layout-horizontal__main">
-                            <div className="nav">
-                                <button data-bs-toggle="tab" data-bs-target="#nav-home">Home</button>
-                                <button data-bs-toggle="tab" data-bs-target="#nav-profile">Home</button>
-                                <button data-bs-toggle="tab" data-bs-target="#nav-contact">Home</button>
-                            </div>
-                            <div className="tab-content">
-                                <div className="tab-pane fade show active" id="nav-home">1</div>
-                                <div className="tab-pane fade" id="nav-profile">2</div>
-                                <div className="tab-pane fade" id="nav-contact">3</div>
-                            </div>
+                        {/* <div className="layout-horizontal__main">
 
-                        </div>
+                        </div> */}
                         <div className="layout-horizontal__aside">
                             <div className="slick-slider-vertical">
                                 <div className="slick-slider carousel-parent nav" id="parent-carousel-1" data-loop="true" data-dots="false" data-swipe="true" data-items={1} data-child="#child-carousel-1" data-for="#child-carousel-1">
                                     <div className="item" >
                                         <div className="slick-image">
-                                            <img src="assets/img/achievement/services-1-565x401.jpg" alt="" width={565} height={401} />
+                                            <img src="https://i.ibb.co/JpzmM4j/IMG-20210719-115304.jpg" alt="" width={565} height={401} />
                                         </div>
                                     </div>
                                     <div className="item" >
                                         <div className="slick-image">
-                                            <img src="assets/img/achievement/services-2-565x401.jpg" alt="" width={565} height={401} />
+                                            <img src="https://i.ibb.co/W2WNCw3/hotel.png" alt="" width={565} height={401} />
                                         </div>
                                     </div>
                                     <div className="item">
                                         <div className="slick-image">
-                                            <img src="assets/img/achievement/services-3-565x401.jpg" alt="" width={565} height={401} />
+                                            <img src="https://i.ibb.co/8g0Nn0b/Travel.png" alt="" width={565} height={401} />
                                         </div>
                                     </div>
                                     <div className="item">
                                         <div className="slick-image">
-                                            <img src="assets/img/achievement/services-4-565x401.jpg" alt="" width={565} height={401} />
+                                            <img src="https://i.ibb.co/8g0Nn0b/Travel.png" alt="" width={565} height={401} />
                                         </div>
                                     </div>
                                     <div className="item">
                                         <div className="slick-image">
-                                            <img src="assets/img/achievement/services-5-565x401.jpg" alt="" width={565} height={401} />
+                                            <img src="https://i.ibb.co/8g0Nn0b/Travel.png" alt="" width={565} height={401} />
                                         </div>
                                     </div>
                                 </div>
@@ -74,39 +76,38 @@ const Achievement = (props) => {
                                     <div className="item">
                                         <div className="slick-slider__inner">
                                             <div className="slick-thumb">
-                                                <img src="assets/img/achievement/services-1-565x401.jpg" alt="" width={565} height={401} />
+                                                <img src="https://i.ibb.co/JpzmM4j/IMG-20210719-115304.jpg" alt="" width={565} height={401} />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="item">
                                         <div className="slick-slider__inner">
                                             <div className="slick-thumb">
-                                                <img src="assets/img/achievement/services-2-565x401.jpg" alt="" width={565} height={401} />
+                                                <img src="https://i.ibb.co/W2WNCw3/hotel.png" alt="" width={565} height={401} />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="item">
                                         <div className="slick-slider__inner">
                                             <div className="slick-thumb">
-                                                <img src="assets/img/achievement/services-3-565x401.jpg" alt="" width={565} height={401} />
+                                                <img src="https://i.ibb.co/8g0Nn0b/Travel.png" alt="" width={565} height={401} />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="item">
                                         <div className="slick-slider__inner">
                                             <div className="slick-thumb">
-                                                <img src="assets/img/achievement/services-4-565x401.jpg" alt="" width={565} height={401} />
+                                                <img src="https://i.ibb.co/8g0Nn0b/Travel.png" alt="" width={565} height={401} />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="item">
                                         <div className="slick-slider__inner">
                                             <div className="slick-thumb">
-                                                <img src="assets/img/achievement/services-5-565x401.jpg" alt="" width={565} height={401} />
+                                                <img src="https://i.ibb.co/8g0Nn0b/Travel.png" alt="" width={565} height={401} />
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>

@@ -25,7 +25,9 @@ const Login = (props) => {
       .then((res) => {
         console.log(res.data.status);
         if (res.data.status == 200) {
-          props.setToken(true);
+          localStorage.setItem('token', true);
+          // props.setToken(true);
+          window.location = "http://localhost:3000/admin";
         } else if (res.data.status == 100) {
           setMessage({ incorrect: "Incorrect account or password" });
         } else {
@@ -38,7 +40,7 @@ const Login = (props) => {
   }
   return (
     <form className="login_container" onSubmit={check}>
-      {props.token ? <Redirect to="/Admin" /> : ''}
+      {/* {localStorage.getItem('token') ? <Redirect to="/Admin" /> : ''} */}
       <div className="login_content">
         <div className="login_title">Login</div>
         <div className="login_form">

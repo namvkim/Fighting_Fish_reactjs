@@ -7,6 +7,16 @@ import Footer from '../../homePage/content/footer/Footer';
 const New_detail = (props) => {
      const { id } = useParams();
      const [results, setResults] = useState([]);
+     const [result, setResult] = useState([]);
+     const [comment, setComment] = useState({ 'news_id': id });
+
+     const onChange = (e) => {
+          const key = e.target.name;
+          const value = e.target.value;
+          const newComment = { ...comment, [key]: value };
+
+          setComment(newComment);
+     }
 
      const get = () => {
           axios({
@@ -14,14 +24,54 @@ const New_detail = (props) => {
                url: 'http://localhost:8000/api/news/' + id,
           })
                .then((res) => {
-                    setResults(res.data);
+                    setResult(res.data);
                })
                .catch((err) => {
                     alert(err);
                });
      }
+     const getComment = () => {
+          axios({
+               method: 'get',
+               url: 'http://localhost:8000/api/newsComment',
+          })
+               .then((res) => {
+                    let arr = [];
+                    res.data.forEach(item => {
+                         if (item.news_id == id) arr.push(item);
+                    });
+                    setResults(arr);
+               })
+               .catch((err) => {
+                    alert(err);
+               });
+     }
+
+     const post = (e) => {
+          e.preventDefault();
+          axios({
+               method: 'post',
+               url: 'http://127.0.0.1:8000/api/newsComment',
+               data: comment,
+          })
+               .then((res) => {
+                    localStorage.setItem('email', res.data);
+                    let arr = [];
+                    res.data.forEach(item => {
+                         if (item.news_id == id) arr.push(item);
+                    });
+                    setResults(arr);
+
+               })
+               .catch((err) => {
+                    alert(err);
+               });
+     }
+
+
      useEffect(() => {
           get();
+          getComment();
      }, [])
 
      return (
@@ -29,21 +79,21 @@ const New_detail = (props) => {
                <Menu />
                <div className="main">
                     <div className="detail">
-                         <p>{results.title}</p>
+                         <p>{result.title}</p>
                     </div>
                     <div className="d-flex ml-2">
                          <Link to="/news" color="red" >
                               <img src="https://image.flaticon.com/icons/png/512/0/340.png" style={{ height: '20px' }} />
                          </Link>
-                         <p>{results.updated_at}</p>
+                         <p>{result.updated_at}</p>
                     </div>
                     <hr />
                     <div className="content">
-                         <img src={results.img} style={{ width: '100%' }} />
-                         <h4>{results.shortContent}</h4>
-                         <p>{results.content}</p>
+                         <img src={result.img} style={{ width: '100%' }} />
+                         <h4>{result.shortContent}</h4>
+                         <p>{result.content}</p>
                     </div>
-                    <div className="row">
+                    {/* <div className="row">
                          <div className="detail_column">
                               <div className="content">
                                    <Link to="/new_detail"  >
@@ -98,40 +148,29 @@ const New_detail = (props) => {
                                    <p className="content_bottom">Lorem ipsum dolor sit ametipsum dolor sit amet,, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
                               </div>
                          </div>
-                    </div>
+                    </div> */}
                </div>
                <div className="main_comment">
-                    <div className="new_comment">
-                         <div className="new_comment_image">
-                              <img className="new_comment_img" src="https://baokhanhhoa.vn/dataimages/201909/original/images5377069_hoa.jpg" alt="Nature" />
-                         </div>
-                         <div className="new_comment_content">
-                              <div className="new_comment_name">name</div>
-                              <div className="new_comment_name_content">
-
-                                   Good job !
-                                   Great!!!!
-                                   Good job !
-                                   Great!!!!
-                                   Good job !
-                                   Great!!!!
-                                   Good job !
-                                   Great!!!!
-
+                    {
+                         results.map((result, index) => {
+                              return <div key={index} className="new_comment_name_content">
+                                   <div className="new_comment_name">{result.email}</div>
+                                   <div>{result.content}</div>
                               </div>
-                         </div>
-                    </div>
+                         })
+                    }
+
                </div>
                <div className="main_comment">
                     <form className="main_comment_form">
                          <div>
-                              {/* <label htmlFor="subject">Comment</label> */}
+                              <input type="email" placeholder="email..." name="email" onChange={onChange} className="form-control"></input>
                          </div>
                          <div>
-                              <textarea id="subject" name="subject" placeholder="Write something.." style={{ height: '200px' }} defaultValue={""} />
+                              <textarea id="subject" name="content" className="form-control" onChange={onChange} placeholder="Write something.." style={{ height: '200px' }} defaultValue={""} />
                          </div>
                          <div>
-                              <input type="submit" defaultValue="Submit" />
+                              <input type="button" onClick={post} defaultValue="Submit" />
                          </div>
                     </form>
                </div>

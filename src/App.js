@@ -17,7 +17,7 @@ import AboutFinance from './components/user/aboutUsPage/AboutFinance';
 import AboutReport from './components/user/aboutUsPage/AboutReport';
 
 function App(props) {
-  const [token, setToken] = useState(true);
+  const [token, setToken] = useState(false);
   return (
     <Router>
       <Switch>
@@ -39,10 +39,8 @@ function App(props) {
         <Route path="/forget" exact={true}><Forget /></Route>
 
         <Route path="/admin" exact={true}>
-          {token ? <Admin /> : <Redirect to="/login" />}
+          {localStorage.getItem('token') ? <Admin /> : <Redirect to="/login" />}
         </Route>
-
-
 
         <Route path="/aboutUs" exact={true}><AboutUs /></Route>
         <Route path="/staff" exact={true}><AboutStaff /></Route>

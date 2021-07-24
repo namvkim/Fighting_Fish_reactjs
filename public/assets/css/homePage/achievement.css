@@ -593,3 +593,9 @@
 .fl-budicons-free-up119:before {
   content: "\e02b";
 }
+
+.slick-slider-vertical .slick-image > img {
+  width: auto;
+  height: 400px;
+  margin: auto;
+}
