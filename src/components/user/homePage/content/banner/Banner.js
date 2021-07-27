@@ -46,7 +46,7 @@ const Banner = (props) => {
         e.preventDefault();
         axios({
             method: 'post',
-            url: 'http://127.0.0.1:8000/api/sendEmail',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/sendEmail',
             data: item,
         })
             .then((res) => {
@@ -64,7 +64,7 @@ const Banner = (props) => {
             const newEnroll = { ...enroll, img: res };
             axios({
                 method: 'post',
-                url: 'http://127.0.0.1:8000/api/enroll',
+                url: 'https://fightingfishpnv22laravel.herokuapp.com/api/enroll',
                 data: newEnroll,
             })
                 .then((res) => {

@@ -7,7 +7,7 @@ const Visited = (props) => {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/user',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/user',
         })
             .then((res) => {
                 setResults(res.data);
@@ -20,7 +20,7 @@ const Visited = (props) => {
     const del = (id) => {
         axios({
             method: 'delete',
-            url: 'http://localhost:8000/api/user/' + id,
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/user/' + id,
         })
             .then((res) => {
                 setResults(res.data);

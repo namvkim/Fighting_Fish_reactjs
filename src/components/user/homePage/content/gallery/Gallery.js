@@ -8,7 +8,7 @@ function Gallery(props) {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/gallery',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/gallery',
         })
             .then((res) => {
                 setResults(res.data.slice(0, 9));

@@ -10,7 +10,7 @@ function Partner(props) {
   const get = () => {
     axios({
       method: 'get',
-      url: 'http://localhost:8000/api/partner',
+      url: 'https://fightingfishpnv22laravel.herokuapp.com/api/partner',
     })
       .then((res) => {
         setResults(res.data);

@@ -41,7 +41,7 @@ const Gallary = (props) => {
             const newItem = { ...item, img: res };
             axios({
                 method: 'post',
-                url: 'http://localhost:8000/api/gallery',
+                url: 'https://fightingfishpnv22laravel.herokuapp.com/api/gallery',
                 data: newItem,
             })
                 .then((res) => {
@@ -60,7 +60,7 @@ const Gallary = (props) => {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/gallery',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/gallery',
         })
             .then((res) => {
                 setResults(res.data);
@@ -73,7 +73,7 @@ const Gallary = (props) => {
     const getType = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/gallerytype',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/gallerytype',
         })
             .then((res) => {
                 setTypes(res.data);
@@ -94,7 +94,7 @@ const Gallary = (props) => {
                 const newItem = { ...item, img: res };
                 axios({
                     method: 'put',
-                    url: 'http://localhost:8000/api/gallery/' + item.id,
+                    url: 'https://fightingfishpnv22laravel.herokuapp.com/api/gallery/' + item.id,
                     data: newItem,
                 })
                     .then((res) => {
@@ -111,7 +111,7 @@ const Gallary = (props) => {
         } else {
             axios({
                 method: 'put',
-                url: 'http://localhost:8000/api/gallery/' + item.id,
+                url: 'https://fightingfishpnv22laravel.herokuapp.com/api/gallery/' + item.id,
                 data: item,
             })
                 .then((res) => {
@@ -130,7 +130,7 @@ const Gallary = (props) => {
     const del = (id) => {
         axios({
             method: 'delete',
-            url: 'http://localhost:8000/api/gallery/' + id,
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/gallery/' + id,
         })
             .then((res) => {
                 setResults(res.data);

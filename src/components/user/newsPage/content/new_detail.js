@@ -21,7 +21,7 @@ const New_detail = (props) => {
      const get = () => {
           axios({
                method: 'get',
-               url: 'http://localhost:8000/api/news/' + id,
+               url: 'https://fightingfishpnv22laravel.herokuapp.com/api/news/' + id,
           })
                .then((res) => {
                     setResult(res.data);
@@ -33,7 +33,7 @@ const New_detail = (props) => {
      const getComment = () => {
           axios({
                method: 'get',
-               url: 'http://localhost:8000/api/newsComment',
+               url: 'https://fightingfishpnv22laravel.herokuapp.com/api/newsComment',
           })
                .then((res) => {
                     let arr = [];

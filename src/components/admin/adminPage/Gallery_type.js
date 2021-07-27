@@ -18,7 +18,7 @@ const Gallery_type = (props) => {
     const post = (e) => {
         axios({
             method: 'post',
-            url: 'http://localhost:8000/api/gallerytype',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/gallerytype',
             data: item,
         })
             .then((res) => {
@@ -36,7 +36,7 @@ const Gallery_type = (props) => {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/gallerytype',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/gallerytype',
         })
             .then((res) => {
                 setResults(res.data);
@@ -53,7 +53,7 @@ const Gallery_type = (props) => {
     const update = (e) => {
         axios({
             method: 'put',
-            url: 'http://localhost:8000/api/gallerytype/' + item.id,
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/gallerytype/' + item.id,
             data: item,
         })
             .then((res) => {
@@ -73,7 +73,7 @@ const Gallery_type = (props) => {
     const del = (id) => {
         axios({
             method: 'delete',
-            url: 'http://localhost:8000/api/gallerytype/' + id,
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/gallerytype/' + id,
         })
             .then((res) => {
                 setResults(res.data);

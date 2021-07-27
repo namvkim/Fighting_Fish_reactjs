@@ -17,7 +17,7 @@ const News_type = (props) => {
     const post = (e) => {
         axios({
             method: 'post',
-            url: 'http://localhost:8000/api/news_type',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/news_type',
             data: item,
         })
             .then((res) => {
@@ -35,7 +35,7 @@ const News_type = (props) => {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/news_type',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/news_type',
         })
             .then((res) => {
                 setResults(res.data);
@@ -52,7 +52,7 @@ const News_type = (props) => {
     const update = (e) => {
         axios({
             method: 'put',
-            url: 'http://localhost:8000/api/news_type/' + item.id,
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/news_type/' + item.id,
             data: item,
         })
             .then((res) => {
@@ -72,7 +72,7 @@ const News_type = (props) => {
     const del = (id) => {
         axios({
             method: 'delete',
-            url: 'http://localhost:8000/api/news_type/' + id,
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/news_type/' + id,
         })
             .then((res) => {
                 setResults(res.data);

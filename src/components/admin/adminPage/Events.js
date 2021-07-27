@@ -41,7 +41,7 @@ const Events = (props) => {
             console.log(newItem);
             axios({
                 method: 'post',
-                url: 'http://localhost:8000/api/event',
+                url: 'https://fightingfishpnv22laravel.herokuapp.com/api/event',
                 data: newItem,
             })
                 .then((res) => {
@@ -60,7 +60,7 @@ const Events = (props) => {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/event',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/event',
         })
             .then((res) => {
                 setResults(res.data);
@@ -81,7 +81,7 @@ const Events = (props) => {
                 const newItem = { ...item, img: res };
                 axios({
                     method: 'put',
-                    url: 'http://localhost:8000/api/event/' + item.id,
+                    url: 'https://fightingfishpnv22laravel.herokuapp.com/api/event/' + item.id,
                     data: newItem,
                 })
                     .then((res) => {
@@ -98,7 +98,7 @@ const Events = (props) => {
         } else {
             axios({
                 method: 'put',
-                url: 'http://localhost:8000/api/event/' + item.id,
+                url: 'https://fightingfishpnv22laravel.herokuapp.com/api/event/' + item.id,
                 data: item,
             })
                 .then((res) => {
@@ -117,7 +117,7 @@ const Events = (props) => {
     const del = (id) => {
         axios({
             method: 'delete',
-            url: 'http://localhost:8000/api/event/' + id,
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/event/' + id,
         })
             .then((res) => {
                 setResults(res.data);

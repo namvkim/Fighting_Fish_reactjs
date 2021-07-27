@@ -11,7 +11,7 @@ const News = (props) => {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/news_type',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/news_type',
         })
             .then((res) => {
                 setResults(res.data);

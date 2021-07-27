@@ -7,7 +7,7 @@ const Enroll = (props) => {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/enroll',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/enroll',
         })
             .then((res) => {
                 setResults(res.data);
@@ -20,7 +20,7 @@ const Enroll = (props) => {
     const del = (id) => {
         axios({
             method: 'delete',
-            url: 'http://localhost:8000/api/enroll/' + id,
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/enroll/' + id,
         })
             .then((res) => {
                 setResults(res.data);

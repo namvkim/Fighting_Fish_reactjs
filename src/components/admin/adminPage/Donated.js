@@ -7,7 +7,7 @@ const Donated = (props) => {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/donation',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/donation',
         })
             .then((res) => {
                 setResults(res.data);
@@ -20,7 +20,7 @@ const Donated = (props) => {
     const del = (id) => {
         axios({
             method: 'delete',
-            url: 'http://localhost:8000/api/donation/' + id,
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/donation/' + id,
         })
             .then((res) => {
                 setResults(res.data);

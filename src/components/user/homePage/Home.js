@@ -30,7 +30,7 @@ const Home = (props) => {
             <Value />
             <About />
             <Event />
-            <Achievement />
+            {/* <Achievement /> */}
             <Partner />
             {/* <Gallery /> */}
             <New />

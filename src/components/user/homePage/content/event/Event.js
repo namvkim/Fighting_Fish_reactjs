@@ -11,7 +11,7 @@ const Event = (props) => {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/event',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/event',
         })
             .then((res) => {
                 setResults(res.data);

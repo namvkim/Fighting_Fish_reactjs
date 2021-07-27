@@ -42,7 +42,7 @@ function News(props) {
             console.log(newItem);
             axios({
                 method: 'post',
-                url: 'http://localhost:8000/api/news',
+                url: 'https://fightingfishpnv22laravel.herokuapp.com/api/news',
                 data: newItem,
             })
                 .then((res) => {
@@ -61,7 +61,7 @@ function News(props) {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/news',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/news',
         })
             .then((res) => {
                 setResults(res.data);
@@ -74,7 +74,7 @@ function News(props) {
     const getType = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/news_type',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/news_type',
         })
             .then((res) => {
                 setTypes(res.data);
@@ -95,7 +95,7 @@ function News(props) {
                 const newItem = { ...item, img: res };
                 axios({
                     method: 'put',
-                    url: 'http://localhost:8000/api/news/' + item.id,
+                    url: 'https://fightingfishpnv22laravel.herokuapp.com/api/news/' + item.id,
                     data: newItem,
                 })
                     .then((res) => {
@@ -112,7 +112,7 @@ function News(props) {
         } else {
             axios({
                 method: 'put',
-                url: 'http://localhost:8000/api/news/' + item.id,
+                url: 'https://fightingfishpnv22laravel.herokuapp.com/api/news/' + item.id,
                 data: item,
             })
                 .then((res) => {
@@ -131,7 +131,7 @@ function News(props) {
     const del = (id) => {
         axios({
             method: 'delete',
-            url: 'http://localhost:8000/api/news/' + id,
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/news/' + id,
         })
             .then((res) => {
                 setResults(res.data);

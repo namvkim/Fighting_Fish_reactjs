@@ -7,7 +7,7 @@ function Contacted(props) {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/contact',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/contact',
         })
             .then((res) => {
                 setResults(res.data);
@@ -20,7 +20,7 @@ function Contacted(props) {
     const del = (id) => {
         axios({
             method: 'delete',
-            url: 'http://localhost:8000/api/contact/' + id,
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/contact/' + id,
         })
             .then((res) => {
                 setResults(res.data);

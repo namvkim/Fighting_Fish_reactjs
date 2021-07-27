@@ -16,7 +16,7 @@ const New_box = (props) => {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/news',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/news',
         })
             .then((res) => {
                 let arr = [];

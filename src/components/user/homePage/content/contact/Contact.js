@@ -15,7 +15,7 @@ const Contact = (props) => {
     e.preventDefault();
     axios({
       method: 'post',
-      url: 'http://127.0.0.1:8000/api/sendEmailContact',
+      url: 'https://fightingfishpnv22laravel.herokuapp.com/api/sendEmailContact',
       data: item,
     })
       .then((res) => {

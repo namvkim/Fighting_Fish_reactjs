@@ -42,7 +42,7 @@ const Achievement = (props) => {
             console.log(newItem);
             axios({
                 method: 'post',
-                url: 'http://localhost:8000/api/achievement',
+                url: 'https://fightingfishpnv22laravel.herokuapp.com/api/achievement',
                 data: newItem,
             })
                 .then((res) => {
@@ -61,7 +61,7 @@ const Achievement = (props) => {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/achievement',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/achievement',
         })
             .then((res) => {
                 setResults(res.data);
@@ -74,7 +74,7 @@ const Achievement = (props) => {
     const getType = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/class',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/class',
         })
             .then((res) => {
                 setTypes(res.data);
@@ -95,7 +95,7 @@ const Achievement = (props) => {
                 const newItem = { ...item, img: res };
                 axios({
                     method: 'put',
-                    url: 'http://localhost:8000/api/achievement/' + item.id,
+                    url: 'https://fightingfishpnv22laravel.herokuapp.com/api/achievement/' + item.id,
                     data: newItem,
                 })
                     .then((res) => {
@@ -112,7 +112,7 @@ const Achievement = (props) => {
         } else {
             axios({
                 method: 'put',
-                url: 'http://localhost:8000/api/achievement/' + item.id,
+                url: 'https://fightingfishpnv22laravel.herokuapp.com/api/achievement/' + item.id,
                 data: item,
             })
                 .then((res) => {
@@ -131,7 +131,7 @@ const Achievement = (props) => {
     const del = (id) => {
         axios({
             method: 'delete',
-            url: 'http://localhost:8000/api/achievement/' + id,
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/achievement/' + id,
         })
             .then((res) => {
                 setResults(res.data);

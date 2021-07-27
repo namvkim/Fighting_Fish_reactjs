@@ -19,7 +19,7 @@ const Login = (props) => {
     e.preventDefault();
     axios({
       method: 'post',
-      url: 'http://localhost:8000/api/adminlogin',
+      url: 'https://fightingfishpnv22laravel.herokuapp.com/api/adminlogin',
       data: account,
     })
       .then((res) => {
@@ -27,7 +27,7 @@ const Login = (props) => {
         if (res.data.status == 200) {
           localStorage.setItem('token', true);
           // props.setToken(true);
-          window.location = "http://localhost:3000/admin";
+          window.location = "https://fightingfishpnv22reactjs.herokuapp.com/admin";
         } else if (res.data.status == 100) {
           setMessage({ incorrect: "Incorrect account or password" });
         } else {

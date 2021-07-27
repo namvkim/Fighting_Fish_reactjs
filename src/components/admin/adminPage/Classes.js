@@ -17,7 +17,7 @@ function Classes(props) {
     const post = (e) => {
         axios({
             method: 'post',
-            url: 'http://localhost:8000/api/class',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/class',
             data: item,
         })
             .then((res) => {
@@ -35,7 +35,7 @@ function Classes(props) {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/class',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/class',
         })
             .then((res) => {
                 setResults(res.data);
@@ -52,7 +52,7 @@ function Classes(props) {
     const update = (e) => {
         axios({
             method: 'put',
-            url: 'http://localhost:8000/api/class/' + item.id,
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/class/' + item.id,
             data: item,
         })
             .then((res) => {
@@ -72,7 +72,7 @@ function Classes(props) {
     const del = (id) => {
         axios({
             method: 'delete',
-            url: 'http://localhost:8000/api/class/' + id,
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/class/' + id,
         })
             .then((res) => {
                 setResults(res.data);

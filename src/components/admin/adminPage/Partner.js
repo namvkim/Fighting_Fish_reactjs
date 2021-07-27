@@ -40,7 +40,7 @@ const Partner = (props) => {
             const newPartner = { ...partner, img: res };
             axios({
                 method: 'post',
-                url: 'http://localhost:8000/api/partner',
+                url: 'https://fightingfishpnv22laravel.herokuapp.com/api/partner',
                 data: newPartner,
             })
                 .then((res) => {
@@ -59,7 +59,7 @@ const Partner = (props) => {
     const get = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8000/api/partner',
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/partner',
         })
             .then((res) => {
                 setResults(res.data);
@@ -80,7 +80,7 @@ const Partner = (props) => {
                 const newPartner = { ...partner, img: res };
                 axios({
                     method: 'put',
-                    url: 'http://localhost:8000/api/partner/' + partner.id,
+                    url: 'https://fightingfishpnv22laravel.herokuapp.com/api/partner/' + partner.id,
                     data: newPartner,
                 })
                     .then((res) => {
@@ -97,7 +97,7 @@ const Partner = (props) => {
         } else {
             axios({
                 method: 'put',
-                url: 'http://localhost:8000/api/partner/' + partner.id,
+                url: 'https://fightingfishpnv22laravel.herokuapp.com/api/partner/' + partner.id,
                 data: partner,
             })
                 .then((res) => {
@@ -116,7 +116,7 @@ const Partner = (props) => {
     const del = (id) => {
         axios({
             method: 'delete',
-            url: 'http://localhost:8000/api/partner/' + id,
+            url: 'https://fightingfishpnv22laravel.herokuapp.com/api/partner/' + id,
         })
             .then((res) => {
                 setResults(res.data);
